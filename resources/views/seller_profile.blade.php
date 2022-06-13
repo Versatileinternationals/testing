@@ -177,6 +177,8 @@
                 </div>
             </div>    
         </div>
+		
+		@if(count($ClientTestimonialLists))
         <div class="sectionLightGray">
             <div class="container">
                 <h2 class="text-center mb-3">CLIENT TESTIMONIAL</h2>
@@ -196,6 +198,7 @@
                 </div>
             </div>
         </div>
+		@endif
         <div class="sectionLinks">
             <div class="container">
                 <div class="row linkrows">

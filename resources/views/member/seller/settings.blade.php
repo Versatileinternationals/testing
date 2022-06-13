@@ -113,6 +113,7 @@
                             <h3 class="fw-bolder m-0">Overview</h3>
                         </div>
                     </div>
+				
                     <!--end::Card header-->
                     <!--begin::Content-->
                     <div id="kt_account_settings_overview" class="collapse show">
@@ -464,7 +465,7 @@
                             <div class="row mb-6">
                                 <!--begin::Label-->
                                 <label class="col-lg-4 col-form-label fw-bold fs-6">
-                                    <span class="required">@if($sellerData->banner!='') Update @else Upload @endif Banner</span>
+                                    <span class="required">@if($sellerData->banner!='') Update Profile  @else Profile @endif Banner</span>
                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Banner"></i>
                                 </label>
                                 <!--end::Label-->
@@ -474,24 +475,34 @@
                                 </div>
                                 <!--end::Col-->
                             </div>
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
-                                    <span class="required">Export or Export Ready</span>
+							 <!--end::Col-->
+							<div class="row mb-6">
+                            <label class="col-lg-4 col-form-label fw-bold fs-6">
+                                    <span class="required">Exporter or Export Ready</span>
                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Export Ready"></i>
-                                </label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
+                            </label>
+							
+							<div class="col-lg-8 fv-row">
+                                    @if($sellerData->export==0)
+									
                                     <div class="col-lg-4 fv-row" style="float:left; margin-left:20px;">
-                                    <input type="radio" value="0" name="export" required/> Export
+                                    <input class="form-check-input me-3" type="radio" value="0" name="export" checked required/> Exporter
                                     </div>
                                     <div class="col-lg-4 fv-row" style="float:left; margin-right:50px;">
-                                    <input type="radio" value="1" name="export" required/> Export Ready
+                                    <input class="form-check-input me-3" type="radio" value="1" name="export" required/> Export Ready
                                     </div>
+                                    @endif
+                                    @if($sellerData->export==1)
+                                    <div class="col-lg-4 fv-row" style="float:left; margin-left:20px;">
+                                    <input class="form-check-input me-3" type="radio" value="0" name="export" required/> Export
+                                    </div>
+                                    <div class="col-lg-4 fv-row" style="float:left; margin-right:50px;">
+                                    <input class="form-check-input me-3" type="radio" value="1" name="export" checked required/> Export Ready
+                                    </div>
+                                    @endif
                                 </div>
-                                <!--end::Col-->
-                            </div>
+							</div>
+							<!--end::Col-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
                                 <label class="col-lg-4 col-form-label fw-bold fs-6">

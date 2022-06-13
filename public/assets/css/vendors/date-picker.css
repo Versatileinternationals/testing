@@ -18,8 +18,8 @@
     background: none;
     border: none; }
 
-/* -------------------------------------------------
-    Datepicker cells
+/* -------------------------------------------------
+    Datepicker cells
    ------------------------------------------------- */
 .datepicker--cells {
   display: -webkit-box;
@@ -138,8 +138,8 @@
   width: 25%;
   height: 33.33%; }
 
-/* -------------------------------------------------
-    Datepicker
+/* -------------------------------------------------
+    Datepicker
    ------------------------------------------------- */
 .datepickers-container {
   position: absolute;
@@ -249,8 +249,8 @@
   .datepicker--body.active {
     display: block !important; }
 
-/* -------------------------------------------------
-    Navigation
+/* -------------------------------------------------
+    Navigation
    ------------------------------------------------- */
 .datepicker--nav {
   color: var(--theme-deafult);

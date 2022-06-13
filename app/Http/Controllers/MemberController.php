@@ -513,7 +513,8 @@ class MemberController extends Controller
         }
         
     }
-    public function do_Login(Request $request){
+    public function do_Login(Request $request)
+    {
         $this->validate($request, [
             'email'   => 'required|email',
             'password'  => 'required|alphaNum|min:3'
@@ -524,7 +525,7 @@ class MemberController extends Controller
             'password' => $request->get('password')
         );
           
-        $usertype = DB::table("users")->where('user_type',$request->usertype)->where('email',$request->email)->exists();
+        // $usertype = DB::table("users")->where('user_type',$request->usertype)->where('email',$request->email)->exists();
           
         if(Auth::attempt($user_data))
         {
@@ -535,19 +536,32 @@ class MemberController extends Controller
             else
             {
                 $member=Auth::User();
+			
                 $member_id=Session::get('member_id');
-                if(User::where('email',$request->email)->get()->count()==1)
-                {
-                    if($member->user_type=='seller'){    
-                        if($usertype==false){
-                            $isOnlineStatus=User::find($member->id);
-                            $isOnlineStatus->IsOnline = true;
-                            $isOnlineStatus->update();
-                            Session::put('member_id', $member->id);
-                            return redirect('/');
+                if(User::where('email',$request->email)->get()->count()==1){ 
+				
+                    if($member->user_type=='seller'){
+						$member= DB::table("users")->where('user_type','seller')->where('email',$request->email)->first();
+						 //$userdata = User::where("email",$request->email)->where("user_type",'seller')->get();  
+						 
+						
+                        //if(User::where('email',$request->email))
+						if(User::where('email',$request->email)  && $member->status==1)
+							{
+							
+						
+                                $isOnlineStatus=User::find($member->id);
+                                $isOnlineStatus->IsOnline = true;
+                                $isOnlineStatus->update();
+                                Session::put('member_id', $member->id);
+                                return redirect('/');
+                           
                         }
-                        else 
-                            return back()->with('error', 'Choosen User is not allowed!!!');                        } 
+                        else{
+							
+                            return back()->with('error', 'Seller not approved by Admin!!!');  
+                        }
+                        
                     }elseif($member->user_type=='buyer'){
                         if($usertype==false){
                             Session::put('member_id', $member->id);
@@ -556,9 +570,9 @@ class MemberController extends Controller
                             $isOnlineStatus->update();
                             return redirect('/');
                         }
-                        else 
+                        else{
                             return back()->with('error', 'Choosen User is not allowed!!!');
-                        }                     
+                        }
                     }elseif($member->user_type=='trainee'){
                         if($usertype==false){
                             Session::put('member_id', $member->id);
@@ -567,9 +581,9 @@ class MemberController extends Controller
                             $isOnlineStatus->update();
                             return redirect('/');
                         }
-                        else{                         
+                        else{
                             return back()->with('error', 'Choosen User is not allowed!!!');
-                        }                     
+                        }                    
                     }elseif($member->user_type=='investor'){
                         if($usertype==false){
                             Session::put('member_id', $member->id);
@@ -578,29 +592,33 @@ class MemberController extends Controller
                             $isOnlineStatus->update();
                             return redirect('/');
                         }
-                        else{                         
+                        else{
                             return back()->with('error', 'Choosen User is not allowed!!!');
-                        }                     
+                        }
                     }else{
                         Auth::logout();
                         return back()->with('error', 'Choosen User is not allowed!!!');
                     }
                 }
-                elseif($email=User::where('email',$request->email)->first()){
+                elseif($email=User::where('email',$request->email)->first())
+				{
                     //  return redirect("SwitchToAccount",compact('email'));
                     Session::put('email', $email->id);
                     return view('SwitchToAccount',compact('email'));
                 }
                 else{
                     Auth::logout();
-                    return back()->with('error', 'Choosen User is not allowed!!!');
+                    return back()->with('error', 'Not approved by admin!!!');
                 }
+            }
             
-        }}
+        }
         else
         {
             return back()->with('error', 'Wrong Login Details');
-         
+        }
+        
+    }
      
 
     // public function SwitchToAccount(Request $request)
@@ -629,6 +647,7 @@ class MemberController extends Controller
            {
             // print_r($member->user_type);die;
             if($member->user_type=='seller'){
+                if($member->status==1){
                 if($usertype==true){
                 $isOnlineStatus=User::find($member->id);
                 $isOnlineStatus->IsOnline = true;
@@ -639,9 +658,14 @@ class MemberController extends Controller
                 }
                 else{
                     return redirect('/')->with('error', 'Choosen User is not allowed!!!');
+                }
+                }
+                else{
+                    return redirect('/user/login')->with('error', 'User not approved by admin.!!!');
                 }
             }
             elseif($member->user_type=='buyer'){
+                if($member->status==1){
                 if($usertype==true){
                 Session::put('member_id', $member->id);
                 $isOnlineStatus=User::find($member->id);
@@ -653,8 +677,13 @@ class MemberController extends Controller
                 else{
                     return redirect('/')->with('error', 'Choosen User is not allowed!!!');
                 }
+                }
+                else{
+                    return redirect('/user/login')->with('error', 'User not approved by admin.!!!');
+                }
                 
             }elseif($member->user_type=='trainee'){
+                if($member->status==1){
                 if($usertype==true){
                 Session::put('member_id', $member->id);
 				$isOnlineStatus=User::find($member->id);
@@ -664,9 +693,14 @@ class MemberController extends Controller
                 }
                 else{
                     return redirect('/')->with('error', 'Choosen User is not allowed!!!');
+                }
+                }
+                else{
+                    return redirect('/user/login')->with('error', 'User not approved by admin.!!!');
                 }
                 
             }elseif($member->user_type=='investor'){
+                if($member->status==1){
                 if($usertype==true){
                 Session::put('member_id', $member->id);
 				$isOnlineStatus=User::find($member->id);
@@ -676,6 +710,10 @@ class MemberController extends Controller
                 }
                 else{
                     return redirect('/')->with('error', 'Choosen User is not allowed!!!');
+                }
+                }
+                else{
+                    return redirect('/user/login')->with('error', 'User not approved by admin.!!!');
                 }
                 
             }else{
@@ -712,10 +750,11 @@ class MemberController extends Controller
          {
            if($member= DB::table("users")->where('user_type',$request->usertype)->where('email',$request->email)->first())
            {
-            // print_r($member->user_type);die;
+            
             
             
             if($member->user_type=='seller'){
+                if($member->status==1){
                
                 $isOnlineStatus=User::find($member->id);
                 $isOnlineStatus->IsOnline = true;
@@ -723,9 +762,14 @@ class MemberController extends Controller
                
                 Session::put('member_id', $member->id);
                 return redirect('/seller');
+                }
+                else{
+                    return back()->with('error','Seller not approved by admin.');
+                }
             
             }
             elseif($member->user_type=='buyer'){
+                if($member->status==1){
                
                 Session::put('member_id', $member->id);
                 $isOnlineStatus=User::find($member->id);
@@ -733,22 +777,36 @@ class MemberController extends Controller
                 $isOnlineStatus->update();
                 
                 return redirect('/buyer');
+                }
+                else{
+                    return back()->with('error','Buyer not approved by admin.');
+                }
 
             }elseif($member->user_type=='trainee'){
+                if($member->status==1){
                 
                 Session::put('member_id', $member->id);
 				$isOnlineStatus=User::find($member->id);
                 $isOnlineStatus->IsOnline = true;
                 $isOnlineStatus->update();
                 return redirect('/trainee');
+                }
+                else{
+                    return back()->with('error','Trainee not approved by admin.');
+                }
 
             }elseif($member->user_type=='investor'){
+                if($member->status==1){
                
                 Session::put('member_id', $member->id);
 				$isOnlineStatus=User::find($member->id);
                 $isOnlineStatus->IsOnline = true;
                 $isOnlineStatus->update();
                 return redirect('/investor');
+                }
+                else{
+                    return back()->with('error','Investor not approved by admin.');
+                }
 
             }else{
                 //Auth::logout();
@@ -936,7 +994,7 @@ class MemberController extends Controller
     
     
     
-     public function profileupdate(Request $request)
+    public function profileupdate(Request $request)
     {
         $seller=User::where('user_type','seller')->where(['email'=>$request->input('email')])->exists();
         $buyer=User::where('user_type','buyer')->where(['email'=>$request->input('email')])->exists();
@@ -944,28 +1002,10 @@ class MemberController extends Controller
         $investor=User::where('user_type','investor')->where(['email'=>$request->input('email')])->exists();
 
         $seller2=Auth::User()->id;
-        //dd($seller2);
-
-        // if($request->password==$request->cpassword){
-            
-            // $request->validate([
-            //     'name' => 'required',   
-            //     'last_name' => 'required',   
-            //     'email' => 'required|unique:users',           
-            //     'phone' => 'required|min:7|max:10',     
-            //     'password' => 'required|min:6', 
-            //     'city' => 'required',
-            //     'address' => 'required',
-            //     'gender' => 'required',
-            //     'age' => 'required',
-            //     'phone'=>'required'
-            // ]);  
-            // $db = DB::table('users')->where(['email'=>$request->input('email')])->get();
             $user=Auth::User();
-  
-            // $data = $user;
 
             $usertype = $request->input("usertype");
+             dd($usertype);
             for($count = 0; $count < count($usertype); $count++)
             {
                 $data = array(
@@ -983,59 +1023,75 @@ class MemberController extends Controller
                     'provider' => 'LOCAL',
                     'user_type' => $usertype[$count]
                 );
-                $data2 = array(
-                    
-                    'name'      => Auth::User()->name,
-                    'last_name' => Auth::User()->last_name,
-                    'email' =>  $request->input("email"),
-                    'city' =>  Auth::User()->city,
-                    'address' =>  Auth::User()->address,
-                    'phone'=>  Auth::User()->phone,
-                    'gender' =>  Auth::User()->gender,
-                    'age' => Auth::User()->age,
-                    'password'  => Auth::User()->password,
-                    'user_id' => rand(10000,99999),
-                    'image' => 'default.png',
-                    'provider' => 'LOCAL',
-                    'user_type' => $usertype[$count]
-                );
+               
                 $emailr = $request->input("email");
-                if($seller==true){
-                    $userIdLast=User::create($data2)->id;
+                // if($seller==true){
+                    // $userIdLast=User::create($data2)->id;
+                // }
+                // else{
+                if(User::where('user_type','=',$usertype)->where('email','=',$emailr)->first()){
+                    if($seller==false){
+                        $userIdLast=User::create($data)->id;
+                    }elseif($buyer==false){
+                        $userIdLast=User::create($data)->id;
+                    }
+                    elseif($trainee==false){
+                        $userIdLast=User::create($data)->id;
+                    }
+                    elseif($investor==false){
+                        $userIdLast=User::create($data)->id;
+                    }else{
+                        echo "some Error.";
+                    }
+                }else{
+                    echo "Some error";
                 }
-                else{
-                    $userIdLast=User::create($data)->id;
+                // }
+
+            if($seller==true){
+                if($request->usertype=='trainee'){
+                    if($trainee==true){
+                        continue;
+                    }
+                    else{
+                        if(User::where('user_type','trainee')->where('id',$userIdLast)->where('email','=',$request->input("email"))->first())
+                            {
+                             $TraineeProfile = new TraineeProfile;
+                             $TraineeProfile->User::create($data)->id;
+                             $TraineeProfile->save();
+                            }
+                    }
                 }
-                
-                
-            if($seller==false){
-                
-                if(User::where('user_type','buyer')->where('id',$userIdLast)->first())
-                {
-                 $BuyerProfile = new BuyerProfile();
-                 $BuyerProfile->buyer_id = $userIdLast;
-                 $BuyerProfile->save();
+                if($request->usertype=='buyer'){
+                    if($buyer==true){
+                        dd($buyer);
+                        continue;
+                    }
+                    else{
+                        if(User::where('user_type','buyer')->where('id',$userIdLast)->where('email','=',$request->input("email"))->first())
+                            {
+                             $BuyerProfile = new BuyerProfile();
+                             $BuyerProfile->User::create($data)->id;
+                             $BuyerProfile->save();
+                            }
+                    }
                 }
-                if(User::where('user_type','trainee')->where('id',$userIdLast)->first())
-                {
-                 $TraineeProfile = new TraineeProfile;
-                 $TraineeProfile->trainee_id = $userIdLast;
-                 $TraineeProfile->save();
+                if($request->usertype=='investor'){
+                    if($investor==true){
+                        continue;
+                    }
+                    else{
+                        if(User::where('user_type','investor')->where('id',$userIdLast)->where('email','=',$request->input("email"))->first())
+                            {
+                            $InvestoProfile = new InvestoProfile();
+                            $InvestoProfile->User::create($data)->id;
+                            $InvestoProfile->save();
+                            }
+                    }
                 }
-                if(User::where('user_type','investor')->where('id',$userIdLast)->first())
-                {
-                 $InvestoProfile = new InvestoProfile();
-                 $InvestoProfile->Investor_id = $userIdLast;
-                 $InvestoProfile->save();
-                }
-                if(User::where('user_type','seller')->where('id',$userIdLast)->first())
-                {
-                    $SellerProfile = new SellerProfile();
-                    $SellerProfile->seller_id = $userIdLast;
-                    $SellerProfile->save();
-                }
+              
             }
-            elseif($buyer==false){
+            elseif($buyer==true){
                 if(User::where('user_type','seller')->where('id',$userIdLast)->first())
                 {
                     $SellerProfile = new SellerProfile();
@@ -1062,7 +1118,7 @@ class MemberController extends Controller
                  $BuyerProfile->save();
                 }
             }
-            elseif($trainee==false){
+            elseif($trainee==true){
                 if(User::where('user_type','seller')->where('id',$userIdLast)->first())
                 {
                     $SellerProfile = new SellerProfile();
@@ -1089,7 +1145,7 @@ class MemberController extends Controller
                  $TraineeProfile->save();
                 }
             }
-            elseif($investor==false){
+            elseif($investor==true){
                 if(User::where('user_type','seller')->where('id',$userIdLast)->first())
                 {
                     $SellerProfile = new SellerProfile();
@@ -1120,7 +1176,7 @@ class MemberController extends Controller
             }
             }
             
-            if($userIdLast)
+            if($data)
             {
                 $name = $request->get('name');
                 $email = $request->get('email');

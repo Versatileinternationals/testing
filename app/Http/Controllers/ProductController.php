@@ -39,7 +39,7 @@ class ProductController extends Controller
 
         $moduleName = $this->moduleName;                
 
-        $products = Product::with(['category','subcategory','brandData','status'])->where('status','=','Pending')->orderBy('created_at','DESC')->get();  
+        $products = Product::with(['category','subcategory','brandData','status'])->where('status','=','Pending')->orderBy('id','DESC')->get();  
 
         return view('admin/Admb2b/'.$this->view.'/index', compact('moduleName', 'products'));
 
@@ -55,6 +55,7 @@ class ProductController extends Controller
         return view('admin/Admb2b/'.$this->view.'/index', compact('moduleName', 'products'));
 
     }
+	
      public function disapproved()
 
     {        
@@ -78,8 +79,25 @@ class ProductController extends Controller
 
     }
     
+    public function featured(Request $request)
+    {        
+        echo "rashid";
+		die();
+
+    }
+    
+    // public function featuredsearch(Request $request)
+    // {        
+    //      dd($request);
+    //     $data['moduleName'] = $this->moduleName;
+
+    //      $data['featured'] = Product::where('featured',$request->featured)->update([])->get();
+    //      // send data to table view 
+    //       return view('admin/Admb2b/'.$this->view.'/table', $data);
+    // }
+
    
- public function ajaxapproved(Request $request)
+    public function ajaxapproved(Request $request)
     {        
          
         $data['moduleName'] = $this->moduleName;

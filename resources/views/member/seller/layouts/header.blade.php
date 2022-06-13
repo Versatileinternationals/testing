@@ -133,6 +133,7 @@
 			<div class="d-flex" style="margin-left:-220px;">
 			    
             	        @foreach($user_session as $member_type)
+						
             	        @if($member_type->user_type == "seller")
             	        <form method="post" action="/Login_switch">
             	            @csrf

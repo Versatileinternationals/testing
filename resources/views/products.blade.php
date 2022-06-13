@@ -27,21 +27,21 @@
        <div class="productArea text-white " id="product">
             <div class="container">
                 <center>
-                    <form method="post" action="/seller-profile">
+                    <form method="post" action="/product-search">
                         @csrf
                         <div class="rowFormFields">
                             
-                            <div class="column1">
+                           <!-- <div class="column1">
                                 <select class="form-select" name="search" id="search">
                                     <option value="Product">Product Search</option>
 								</select>
-                            </div>
+                            </div>-->
                             <div class="column2">
                                 {{ csrf_field() }}
-                                <input type="text" class="typeahead form-control" id="name" name="name" placeholder="Enter Your Search..."/>
+                                <input type="text" class="typeahead form-control" id="name" name="search" placeholder="Enter Your Search..."/>
                             </div>
                             <div class="column3">
-                                <button class="btnSearch" style="height:3rem;">Search Here...</button>
+                                <button type="submit" class="btnSearch" style="height:3rem;">Search Here...</button>
                             </div>
                         </div>
                     </form>

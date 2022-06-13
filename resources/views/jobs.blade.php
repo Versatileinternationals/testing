@@ -29,13 +29,20 @@
                         <div class="box-JobDetail">
 						
                             <a href="{{ url('job_detail/'.base64_encode($JobList->id))}}" class="linkApplyNow">Read More</a>
+							@if($JobList->JobImage)
+							<div class="jobimage">
+							
+							<a href="{{ url('job_detail/'.base64_encode($JobList->id))}}" class="linkApplyNow"><img width="100px" height="100px" src="{{url('assets/images/jobs/'.$JobList->JobImage)}}"></a>
+							</div>
+							@endif
                             <h3><a href="{{ url('job_detail/'.base64_encode($JobList->id))}}">{{$JobList->JobName}}</a></h3>
                             <h4>{{$JobList->company_name}} </h4>
                             <ul class="listDetailDesigner">
                                 <li><i class="fas fa-briefcase"></i> {{$JobList->experience}}</li>
                                 <li><b>BZ$ </b>{{$JobList->Salary}} </li>
-                                <li><i class="far fa-file-alt"></i><p> {!!html_entity_decode($JobList->description)!!}</p></li>
+                                <li><i class="far fa-file-alt"></i><p  style="margin-bottom:20px;"> {!!html_entity_decode($JobList->description)!!}</p></li>
                             </ul>
+							
                             @php
                             $arr=explode(',',$JobList->job_skills);
                             @endphp

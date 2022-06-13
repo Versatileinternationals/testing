@@ -158,6 +158,7 @@
                      </li>
 
                     @if(isset($user_session))
+					
                      @foreach($user_session as $userdata)
                      @if($userdata->user_type == 'seller')
                      <li class="nav-item dropdown">

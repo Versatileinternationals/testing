@@ -1,22 +1,22 @@
 @charset "UTF-8";
-/*! -----------------------------------------------------------------------------------
-
-    Template Name: Cuba Admin
-    Template URI: http://admin.pixelstrap.com/cuba/theme
-    Description: This is Admin theme
-    Author: Pixelstrap
-    Author URI: https://themeforest.net/user/pixelstrap
-
------------------------------------------------------------------------------------
-
-
+/*! -----------------------------------------------------------------------------------
+
+    Template Name: Cuba Admin
+    Template URI: http://admin.pixelstrap.com/cuba/theme
+    Description: This is Admin theme
+    Author: Pixelstrap
+    Author URI: https://themeforest.net/user/pixelstrap
+
+-----------------------------------------------------------------------------------
+
+
  */
 :root {
   --theme-deafult: #7366ff;
   --theme-secondary: #f73164; }
 
-/**=====================
-     Reset css start
+/**=====================
+     Reset css start
 ==========================**/
 .font-roboto {
   font-family: Roboto, sans-serif; }
@@ -1881,11 +1881,11 @@ button:focus {
   100% {
     opacity: 1; } }
 
-/**=====================
-     Reset css Ends
+/**=====================
+     Reset css Ends
 ==========================**/
-/**=====================
-    Typography css start
+/**=====================
+    Typography css start
 ==========================**/
 body {
   font-size: 14px;
@@ -2113,11 +2113,11 @@ fieldset .input-group-lg .touchspin {
 .input-group-text i {
   line-height: 1.5; }
 
-/**=====================
-    Typography css Ends
+/**=====================
+    Typography css Ends
 ==========================**/
-/**=====================
-    24. According CSS start
+/**=====================
+    24. According CSS start
 ==========================**/
 .default-according .card {
   margin-bottom: 0;
@@ -2160,11 +2160,11 @@ fieldset .input-group-lg .touchspin {
     content: "";
     font-family: IcoFont; }
 
-/**=====================
-     24. According CSS Ends
+/**=====================
+     24. According CSS Ends
 ==========================**/
-/**=====================
-     15. Alert CSS start
+/**=====================
+     15. Alert CSS start
 ==========================**/
 .alert {
   border-radius: 0.15rem;
@@ -2658,11 +2658,11 @@ strong {
   border-width: 2px;
   padding: 11px 1.25rem; }
 
-/**=====================
-     15. Alert CSS end
+/**=====================
+     15. Alert CSS end
 ==========================**/
-/**=====================
-    80. avatars CSS start
+/**=====================
+    80. avatars CSS start
 ==========================**/
 .avatars .avatar {
   display: inline-block;
@@ -2726,11 +2726,11 @@ strong {
   .avatar-showcase .avatar-group {
     margin-bottom: 10px; }
 
-/**=====================
-     80. avatars CSS Ends
+/**=====================
+     80. avatars CSS Ends
 ==========================**/
-/**=====================
-    49. Badge CSS start
+/**=====================
+    49. Badge CSS start
 ==========================**/
 .badge {
   padding: 0.44em 0.7em; }
@@ -2865,11 +2865,11 @@ strong {
 .round-badge-secondary {
   background-color: var(--theme-secondary); }
 
-/**=====================
-    49. Badge CSS Ends
+/**=====================
+    49. Badge CSS Ends
 ==========================**/
-/**=====================
-    81. Bookmark CSS start
+/**=====================
+    81. Bookmark CSS start
 ==========================**/
 .bookmark ul li {
   display: inline-block; }
@@ -2938,11 +2938,11 @@ strong {
   right: 0;
   left: 0; }
 
-/**=====================
-    81. Bookmark CSS Ends
+/**=====================
+    81. Bookmark CSS Ends
 ==========================**/
-/**=====================
-    57. breadcrumb CSS Start
+/**=====================
+    57. breadcrumb CSS Start
 ==========================**/
 .breadcrumb-colored li a {
   color: #fff; }
@@ -2960,11 +2960,11 @@ strong {
 .breadcrumb-item.active {
   text-transform: capitalize; }
 
-/**=====================
-    57. breadcrumb CSS ends
+/**=====================
+    57. breadcrumb CSS ends
 ==========================**/
-/**=====================
-     35. Form builder css start
+/**=====================
+     35. Form builder css start
 ==========================**/
 .form-builder .help-block {
   margin-bottom: 0;
@@ -2987,11 +2987,11 @@ strong {
 .form-builder .theme-form {
   margin-top: 30px; }
 
-/**=====================
-    35. Form builder css Ends
+/**=====================
+    35. Form builder css Ends
 ==========================**/
-/**=====================
-    06. Button CSS start
+/**=====================
+    06. Button CSS start
 ==========================**/
 .btn-link {
   color: var(--theme-deafult); }
@@ -3342,11 +3342,11 @@ strong {
     border-style: solid;
     border-color: #555 transparent transparent transparent; }
 
-/**=====================
-     06. Button CSS end
+/**=====================
+     06. Button CSS end
 ==========================**/
-/**=====================
-    03.  Card CSS Start
+/**=====================
+    03.  Card CSS Start
 ==========================**/
 .card {
   margin-bottom: 30px;
@@ -3540,11 +3540,11 @@ strong {
       .custom-card .card-footer > div .m-b-card {
         margin-bottom: 10px; }
 
-/**=====================
-    03. Card CSS End
+/**=====================
+    03. Card CSS End
 ==========================**/
-/**=====================
-     07. Color CSS Start
+/**=====================
+     07. Color CSS Start
 ==========================**/
 .color-box {
   margin-bottom: -10px; }
@@ -4908,11 +4908,11 @@ strong {
 .light-font {
   color: rgba(43, 43, 43, 0.7); }
 
-/**=====================
-     07. Color CSS Ends
+/**=====================
+     07. Color CSS Ends
 ==========================**/
-/**=====================
-    30. Data-table CSS Start
+/**=====================
+    30. Data-table CSS Start
 ==========================**/
 div.dt-button-background {
   display: none !important; }
@@ -5116,11 +5116,11 @@ tr.shown td.details-control {
 table.dataTable.display tbody tr.odd > .sorting_1 {
   background-color: #fdfeff; }
 
-/**=====================
-     30. Data-table CSS Ends
+/**=====================
+     30. Data-table CSS Ends
 ==========================**/
-/**=====================
-    52. Datepicker CSS Start
+/**=====================
+    52. Datepicker CSS Start
 ==========================**/
 .clockpicker-canvas line {
   stroke: var(--theme-deafult); }
@@ -5239,11 +5239,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   color: inherit;
   background-color: #bdc3e9; }
 
-/**=====================
-   52. Datepicker CSS End
+/**=====================
+   52. Datepicker CSS End
 ==========================**/
-/**=====================
-    37. Dropdown CSS Start
+/**=====================
+    37. Dropdown CSS Start
 ==========================**/
 .dropdown-basic {
   margin-bottom: -10px; }
@@ -5320,11 +5320,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   .dropup-basic .dropup:hover .dropup-content a.active {
     background-color: #f1f1f1; }
 
-/**=====================
-    37. Dropdown CSS Ends
+/**=====================
+    37. Dropdown CSS Ends
 ==========================**/
-/**=====================
-     11. Form Builder 1 CSS Start
+/**=====================
+     11. Form Builder 1 CSS Start
 ==========================**/
 .form-builder .drag-box {
   -webkit-user-select: none;
@@ -5454,11 +5454,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
     .form-builder .popover-body .form-group.row .col-lg-12 {
       padding: 0; }
 
-/**=====================
-    11. Form Builder 1 CSS Ends
+/**=====================
+    11. Form Builder 1 CSS Ends
 ==========================**/
-/**=====================
-     29. Form Input CSS Start
+/**=====================
+     29. Form Input CSS Start
 ==========================**/
 .icon-addon .addon-md .glyphicon, .icon-addon .addon-md .fa {
   position: absolute;
@@ -5520,11 +5520,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   border-top-left-radius: 1.3rem;
   border-bottom-left-radius: 1.3rem; }
 
-/**=====================
-     29. Form Input CSS Ends
+/**=====================
+     29. Form Input CSS Ends
 ==========================**/
-/**=====================
-     48. Form Wizard CSS Start
+/**=====================
+     48. Form Wizard CSS Start
 ==========================**/
 /*Form Wizard One Start*/
 .form-wizard .tab {
@@ -5764,11 +5764,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
           color: #000; }
 
 /*Form Wizard Four Ends*/
-/**=====================
-    48. Form Wizard CSS Ends
+/**=====================
+    48. Form Wizard CSS Ends
 ==========================**/
-/**=====================
-    26. Form CSS Start
+/**=====================
+    26. Form CSS Start
 ==========================**/
 .theme-form .form-control :focus {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(171, 140, 228, 0.05);
@@ -5923,11 +5923,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   padding-top: 17px;
   font-weight: 500; }
 
-/**=====================
-    26. Form CSS Ends
+/**=====================
+    26. Form CSS Ends
 ==========================**/
-/**=====================
-     12. Form Builder 2 CSS Start
+/**=====================
+     12. Form Builder 2 CSS Start
 ==========================**/
 .form-builder-column #pills-tabContent .theme-form .form-group,
 .form-builder-column #pills-tabContent .theme-form .ui-draggable {
@@ -6030,11 +6030,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
 .draggable select {
   border-radius: 4px; }
 
-/**=====================
-     12. Form Builder 2 CSS Ends
+/**=====================
+     12. Form Builder 2 CSS Ends
 ==========================**/
-/**=====================
-    10. ICON CSS Start
+/**=====================
+    10. ICON CSS Start
 ==========================**/
 .icon-lists div {
   cursor: pointer;
@@ -6151,11 +6151,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
 .icon-first h6 {
   display: none; }
 
-/**=====================
-     10. ICON CSS Ends
+/**=====================
+     10. ICON CSS Ends
 ==========================**/
-/**=====================
-     17. List CSS Start
+/**=====================
+     17. List CSS Start
 ==========================**/
 .list-group-item.active {
   background-color: var(--theme-deafult);
@@ -6169,11 +6169,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   width: 40px;
   margin-right: 10px; }
 
-/**=====================
-     17. List CSS Ends
+/**=====================
+     17. List CSS Ends
 ==========================**/
-/**=====================
-     04. Loader CSS Start
+/**=====================
+     04. Loader CSS Start
 ==========================**/
 .loader-wrapper {
   height: 100%;
@@ -7935,11 +7935,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   to {
     background-position: -2em 0; } }
 
-/**=====================
-     04. Loader CSS Ends
+/**=====================
+     04. Loader CSS Ends
 ==========================**/
-/**=====================
-     16. Popover CSS Start
+/**=====================
+     16. Popover CSS Start
 ==========================**/
 .popover-header {
   background-color: #2c323f;
@@ -7951,11 +7951,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
 .popover-main .btn-showcase button:last-child {
   margin-right: 0; }
 
-/**=====================
-     16. Popover CSS Ends
+/**=====================
+     16. Popover CSS Ends
 ==========================**/
-/**=====================
-     77. Print CSS Start
+/**=====================
+     77. Print CSS Start
 ==========================**/
 @media print {
   .page-wrapper .page-title {
@@ -7977,11 +7977,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
       -ms-flex-align: center;
           align-items: center; }
 
-/**=====================
-    77. Print CSS Ends
+/**=====================
+    77. Print CSS Ends
 ==========================**/
-/**=====================
-     28. Radio CSS Start
+/**=====================
+     28. Radio CSS Start
 ==========================**/
 .animate-chk label {
   line-height: 1.6;
@@ -8465,11 +8465,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
 .radio .radio-inline {
   margin-top: 0; }
 
-/**=====================
-     28. Radio CSS Ends
+/**=====================
+     28. Radio CSS Ends
 ==========================**/
-/**=====================
-    56.  Ribbon CSS Start
+/**=====================
+    56.  Ribbon CSS Start
 ==========================**/
 [class*="ribbon-wrapper"] {
   position: relative;
@@ -9017,11 +9017,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   border-right-color: transparent;
   border-left-color: #e8c308; }
 
-/**=====================
-     56. Ribbon CSS Ends
+/**=====================
+     56. Ribbon CSS Ends
 ==========================**/
-/**=====================
-    18. Switch  CSS Start
+/**=====================
+    18. Switch  CSS Start
 ==========================**/
 .switch {
   position: relative;
@@ -9232,11 +9232,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   .switch-showcase .media {
     line-height: 1; }
 
-/**=====================
-     18. Switch  CSS Ends
+/**=====================
+     18. Switch  CSS Ends
 ==========================**/
-/**=====================
-    44. Tabs CSS Start
+/**=====================
+    44. Tabs CSS Start
 ==========================**/
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   background-color: var(--theme-deafult); }
@@ -9559,11 +9559,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
       .tabbed-card ul.border-tab.nav-tabs .nav-item .nav-link {
         padding: 32px 15px; }
 
-/**=====================
-     44. Tabs CSS Ends
+/**=====================
+     44. Tabs CSS Ends
 ==========================**/
-/**=====================
-     39. Table  CSS Start
+/**=====================
+     39. Table  CSS Start
 ==========================**/
 .pills-component {
   width: 20%; }
@@ -9647,11 +9647,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
 .table-bordered td, .table-bordered th {
   border-color: #f2f4ff; }
 
-/**=====================
-     39.Table CSS Ends
+/**=====================
+     39.Table CSS Ends
 ==========================**/
-/**=====================
-    20.  Touchspin  CSS Start
+/**=====================
+    20.  Touchspin  CSS Start
 ==========================**/
 .bootstrap-touchspin input.touchspin {
   padding: 0 12px; }
@@ -9693,11 +9693,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
 .bootstrap-touchspin .dropdown-basic .dropdown .dropdown-content {
   z-index: 9999; }
 
-/**=====================
-     20. Touchspin  CSS Ends
+/**=====================
+     20. Touchspin  CSS Ends
 ==========================**/
-/**=====================
-     54. Tour  CSS Start
+/**=====================
+     54. Tour  CSS Start
 ==========================**/
 .introjs-helperLayer {
   background-color: rgba(255, 255, 255, 0.9);
@@ -9817,11 +9817,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
 .introjs-hint-dot {
   border: 10px solid rgba(146, 146, 146, 0.36); }
 
-/**=====================
-    54. Tour  CSS Ends
+/**=====================
+    54. Tour  CSS Ends
 ==========================**/
-/**=====================
-     50. Tree  CSS Start
+/**=====================
+     50. Tree  CSS Start
 ==========================**/
 .jstree-default .jstree-clicked {
   background-color: #ccd1ee;
@@ -9843,11 +9843,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   .vakata-context .vakata-context-separator, .vakata-context ul .vakata-context-separator {
     display: none; }
 
-/**=====================
-     50. Tree CSS Ends
+/**=====================
+     50. Tree CSS Ends
 ==========================**/
-/**=====================
-     typahead-search  CSS Start
+/**=====================
+     typahead-search  CSS Start
 ==========================**/
 .Typeahead {
   width: 100%; }
@@ -9998,11 +9998,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   width: 1rem;
   height: 1rem; }
 
-/**=====================
-    typahead-search CSS Ends
+/**=====================
+    typahead-search CSS Ends
 ==========================**/
-/**=====================
-    46. Blog CSS start
+/**=====================
+    46. Blog CSS start
 ==========================**/
 .blog-box img {
   border-radius: 0.25rem; }
@@ -10194,11 +10194,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
     .comment-box .comment-social li i {
       padding-right: 10px; }
 
-/**=====================
-    46. Blog CSS ends
+/**=====================
+    46. Blog CSS ends
 ==========================**/
-/**=====================
-     85. bookmark app CSS Start
+/**=====================
+     85. bookmark app CSS Start
 ==========================**/
 .modal-bookmark .modal-body,
 .modal-bookmark .modal-header {
@@ -10461,11 +10461,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
   .bookmark-tabcontent .details-bookmark.list-bookmark .bookmark-card img {
     width: 28%; } }
 
-/**=====================
-   85. bookmark app CSS Ends
+/**=====================
+   85. bookmark app CSS Ends
 ==========================**/
-/**=====================
-    82. cart CSS start
+/**=====================
+    82. cart CSS start
 ==========================**/
 .cart .total-amount {
   text-align: right !important;
@@ -10491,11 +10491,11 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
     float: right;
     padding-right: 85px; }
 
-/**=====================
-    82. cart CSS Ends
+/**=====================
+    82. cart CSS Ends
 ==========================**/
-/**=====================
-    41. Chart CSS Start
+/**=====================
+    41. Chart CSS Start
 ==========================**/
 .radial-bar.radial-bar-lg:after, .radial-bar.radial-bar-lg > img {
   width: 70px;
@@ -10799,11 +10799,11 @@ p.data-attributes svg {
 .ct-series-b .ct-area {
   fill: var(--theme-secondary); }
 
-/**=====================
-     41. Chart CSS End
+/**=====================
+     41. Chart CSS End
 ==========================**/
-/**=====================
-     14. Chat CSS Start
+/**=====================
+     14. Chat CSS Start
 ==========================**/
 .chat-box .toogle-bar {
   display: none; }
@@ -11113,11 +11113,11 @@ p.data-attributes svg {
 .call-chat-sidebar .card .card-body, .chat-body .card .card-body {
   padding: 15px; }
 
-/**=====================
-    14.  Chat CSS Ends
+/**=====================
+    14.  Chat CSS Ends
 ==========================**/
-/**=====================
-    84. Checkout CSS start
+/**=====================
+    84. Checkout CSS start
 ==========================**/
 .checkout .checkout-details {
   background-color: #f9f9f9;
@@ -11210,11 +11210,11 @@ p.data-attributes svg {
   width: 30%;
   margin-left: 15px; }
 
-/**=====================
-    86. Checkout CSS Ends
+/**=====================
+    86. Checkout CSS Ends
 ==========================**/
-/**=====================
-    Responsive CSS Start
+/**=====================
+    Responsive CSS Start
 ==========================**/
 @media screen and (max-width: 1199px) {
   .checkout .checkout-details {
@@ -11240,11 +11240,11 @@ p.data-attributes svg {
   .order-box .sub-total li .count {
     width: 50%; } }
 
-/**=====================
-    84. Checkout CSS ends
+/**=====================
+    84. Checkout CSS ends
 ==========================**/
-/**=====================
-     27. Coming Soon CSS Start
+/**=====================
+     27. Coming Soon CSS Start
 ==========================**/
 .comingsoon-bgimg {
   background: url(../images/other-images/coming-soon-bg.jpg);
@@ -11318,11 +11318,11 @@ p.data-attributes svg {
     -webkit-transition: 1s opacity;
     transition: 1s opacity; }
 
-/**=====================
-    27. Coming Soon CSS Ends
+/**=====================
+    27. Coming Soon CSS Ends
 ==========================**/
-/**=====================
-      86. contacts CSS Start
+/**=====================
+      86. contacts CSS Start
 ==========================**/
 .alert-contactadd {
   background-color: #fff;
@@ -11529,11 +11529,11 @@ p.data-attributes svg {
       width: 80px !important;
       margin-bottom: 15px; } }
 
-/**=====================
-    86. contacts CSS Ends
+/**=====================
+    86. contacts CSS Ends
 ==========================**/
-/**=====================
-      67. Dashboard 2 CSS Start
+/**=====================
+      67. Dashboard 2 CSS Start
 ==========================**/
 .dash-chart .profit-card {
   margin: -30px 0 -14px; }
@@ -12163,11 +12163,11 @@ p.data-attributes svg {
   .activity-timeline .media .activity-line {
     height: 67%; } }
 
-/**=====================
-     67. Dashboard 2  CSS End
+/**=====================
+     67. Dashboard 2  CSS End
 ==========================**/
-/**=====================
-53. Dashboard CSS Start
+/**=====================
+53. Dashboard CSS Start
 ==========================**/
 .texts-light {
   color: rgba(43, 43, 43, 0.7); }
@@ -14141,11 +14141,11 @@ footer.blockquote-footer {
     .appointment-table table tr td:nth-child(2) {
       min-width: 120px; } }
 
-/**=====================
-53. Dashboard CSS Ends
+/**=====================
+53. Dashboard CSS Ends
 ==========================**/
-/**=====================
-    33.  Ecommerce  CSS Start
+/**=====================
+    33.  Ecommerce  CSS Start
 ==========================**/
 /**====== Product Start ======**/
 .toggle-data {
@@ -14590,8 +14590,8 @@ footer.blockquote-footer {
     height: 20px;
     margin: 15px 15px 0 0; }
 
-/**=====================
-    33. Ecommerce  CSS End
+/**=====================
+    33. Ecommerce  CSS End
 ==========================**/
 @media screen and (max-width: 1660px) and (min-width: 1200px) {
   .xl-cs-65 {
@@ -14611,8 +14611,8 @@ footer.blockquote-footer {
     max-width: 420px;
     margin: 0 auto; } }
 
-/**=====================
-    13.  Email Application  CSS Start
+/**=====================
+    13.  Email Application  CSS Start
 ==========================**/
 .email-wrap .row .col-xl-3 + .col-xl-3 {
   padding-right: 0; }
@@ -14760,11 +14760,11 @@ footer.blockquote-footer {
   display: inline-block;
   margin-right: 25px; }
 
-/**=====================
-    13.  Email Application  CSS Ends
+/**=====================
+    13.  Email Application  CSS Ends
 ==========================**/
-/**=====================
-     09. Error-page  CSS Start
+/**=====================
+     09. Error-page  CSS Start
 ==========================**/
 .error-wrapper {
   display: -webkit-box;
@@ -14862,11 +14862,11 @@ footer.blockquote-footer {
       -webkit-box-shadow: 0 20px 35px 0 rgba(0, 0, 0, 0.21);
               box-shadow: 0 20px 35px 0 rgba(0, 0, 0, 0.21); }
 
-/**=====================
-     09. Error-page CSS Ends
+/**=====================
+     09. Error-page CSS Ends
 ==========================**/
-/**=====================
-     71. Faq CSS start
+/**=====================
+     71. Faq CSS start
 ==========================**/
 .knowledgebase-bg {
   height: 500px;
@@ -15092,11 +15092,11 @@ footer.blockquote-footer {
   .updates-faq-main {
     margin-bottom: 15px; } }
 
-/**=====================
-     71. Faq CSS end
+/**=====================
+     71. Faq CSS end
 ==========================**/
-/**=====================
-    File Manager
+/**=====================
+    File Manager
 ==========================**/
 .file-sidebar .card .card-body,
 .file-sidebar .card .card-header,
@@ -15442,11 +15442,11 @@ footer.blockquote-footer {
   .file-content .btn-outline-primary {
     margin-top: 10px; } }
 
-/**=====================
-     File Manager
+/**=====================
+     File Manager
 ==========================**/
-/**=====================
-     45. Gallery CSS Start
+/**=====================
+     45. Gallery CSS Start
 ==========================**/
 .profile-img-style img, .scroll-bar-wrap img {
   width: 100%; }
@@ -15765,11 +15765,11 @@ footer.blockquote-footer {
   border: 0;
   padding: 0; }
 
-/**=====================
-     45. Gallery CSS Ends
+/**=====================
+     45. Gallery CSS Ends
 ==========================**/
-/**=====================
-     74. internationalization css start
+/**=====================
+     74. internationalization css start
 ==========================**/
 .hdg_main {
   position: relative; }
@@ -15804,11 +15804,11 @@ footer.blockquote-footer {
     width: 30%;
     right: 0; } }
 
-/**=====================
-     74. internationalization CSS end
+/**=====================
+     74. internationalization CSS end
 ==========================**/
-/**=====================
-     72. Job CSS start
+/**=====================
+     72. Job CSS start
 ==========================**/
 .filter-cards-view .job-filter:first-child {
   margin-bottom: 30px; }
@@ -15948,11 +15948,11 @@ footer.blockquote-footer {
   .job-search .job-description .btn {
     padding: 6px 12px; } }
 
-/**=====================
-     72. Job CSS end
+/**=====================
+     72. Job CSS end
 ==========================**/
-/**=====================
-     31. JS datagrid CSS Start
+/**=====================
+     31. JS datagrid CSS Start
 ==========================**/
 .jsgrid .jsgrid-grid-body .jsgrid-cell {
   padding: 0.75rem; }
@@ -15989,11 +15989,11 @@ footer.blockquote-footer {
   padding: 0.75rem;
   font-weight: 500; }
 
-/**=====================
-     31. JS datagrid CSS Ends
+/**=====================
+     31. JS datagrid CSS Ends
 ==========================**/
-/**=====================
-   61. base_inputs CSS start
+/**=====================
+   61. base_inputs CSS start
 ==========================**/
 .jkanban-container .btn {
   margin-bottom: 10px; }
@@ -16114,11 +16114,11 @@ footer {
   .kanban-container .kanban-board {
     width: 270px !important; } }
 
-/**=====================
-    61. base_inputs CSS ends
+/**=====================
+    61. base_inputs CSS ends
 ==========================**/
-/**=====================
-     73. knowledgebase CSS start
+/**=====================
+     73. knowledgebase CSS start
 ==========================**/
 .browse .browse-articles.browse-bottom {
   margin-top: 30px; }
@@ -16185,11 +16185,11 @@ footer {
     text-overflow: ellipsis;
     display: inline-block; } }
 
-/**=====================
-     73. knowledgebase CSS end
+/**=====================
+     73. knowledgebase CSS end
 ==========================**/
-/**=====================
-     38. Landing CSS Start
+/**=====================
+     38. Landing CSS Start
 ==========================**/
 .framworks .nav-pills {
   margin-bottom: -15px; }
@@ -17214,11 +17214,11 @@ footer {
   .bg-sky-blue .main-landing .landing-main-content p {
     font-size: 12px; } }
 
-/**=====================
-     38. Landing CSS Ends
+/**=====================
+     38. Landing CSS Ends
 ==========================**/
-/**=====================
-     76. Language CSS start
+/**=====================
+     76. Language CSS start
 ==========================**/
 .current_lang {
   cursor: pointer;
@@ -17300,11 +17300,11 @@ footer {
 .translate_wrapper.active .more_lang .lang {
   border-bottom: 1px solid #eaeaea; }
 
-/**=====================
-     76. Language CSS end
+/**=====================
+     76. Language CSS end
 ==========================**/
-/**=====================
-     75. Learning CSS start
+/**=====================
+     75. Learning CSS start
 ==========================**/
 .learning-header {
   margin-bottom: 10px; }
@@ -17355,11 +17355,11 @@ footer {
   .upcoming-course .media + .media {
     margin-top: 15px; } }
 
-/**=====================
-     75. Learning CSS end
+/**=====================
+     75. Learning CSS end
 ==========================**/
-/**=====================
-    25. Authentication CSS Start
+/**=====================
+    25. Authentication CSS Start
 ==========================**/
 .login-card {
   min-height: 100vh;
@@ -17465,11 +17465,11 @@ footer {
   top: 10px;
   right: 10px; }
 
-/**=====================
-    25. Authentication CSS Ends
+/**=====================
+    25. Authentication CSS Ends
 ==========================**/
-/**=====================
-   19. Mega option CSS Start
+/**=====================
+   19. Mega option CSS Start
 ==========================**/
 .mega-inline {
   margin-bottom: -30px;
@@ -17546,11 +17546,11 @@ footer {
 .rating-star-wrapper {
   color: #797979; }
 
-/**=====================
-     19. Mega option CSS Ends
+/**=====================
+     19. Mega option CSS Ends
 ==========================**/
-/**=====================
-     76. Order History CSS start
+/**=====================
+     76. Order History CSS start
 ==========================**/
 .prooduct-details-box {
   margin-bottom: 30px; }
@@ -17635,11 +17635,11 @@ footer {
     width: 900px;
     overflow: auto; } }
 
-/**=====================
-     76. Order History CSS end
+/**=====================
+     76. Order History CSS end
 ==========================**/
-/**=====================
-     32. pagination CSS Start
+/**=====================
+     32. pagination CSS Start
 ==========================**/
 /*test Nav bar color */
 .pagination-theme .page-item .page-link {
@@ -17706,11 +17706,11 @@ footer {
   background-color: #f8d62b !important;
   border-color: #f8d62b; }
 
-/**=====================
-     32. pagination CSS Ends
+/**=====================
+     32. pagination CSS Ends
 ==========================**/
-/**=====================
-     34. Pricing CSS Start
+/**=====================
+     34. Pricing CSS Start
 ==========================**/
 .pricing-simple {
   -webkit-box-shadow: 0 0 10px 5px rgba(68, 102, 242, 0.05);
@@ -17823,11 +17823,11 @@ footer {
   .pricing-simple .card-body h1 {
     margin-bottom: 15px; } }
 
-/**=====================
-    34. Pricing CSS Ends
+/**=====================
+    34. Pricing CSS Ends
 ==========================**/
-/**=====================
-     23. Progress CSS Start
+/**=====================
+     23. Progress CSS Start
 ==========================**/
 .progress-showcase .progress {
   margin-bottom: 10px; }
@@ -18135,8 +18135,8 @@ footer {
     -webkit-animation-iteration-count: infinite;
             animation-iteration-count: infinite; }
 
-/**=====================
-     23. Progress CSS Ends
+/**=====================
+     23. Progress CSS Ends
 ==========================**/
 .project-list .row {
   margin: 15px; }
@@ -18331,8 +18331,8 @@ footer {
     .tab-content .row .col-xl-4 + .col-xl-4 + .col-xl-4 .project-box {
       margin-top: 1.5rem !important; } }
 
-/**=====================
-     79. social app css start
+/**=====================
+     79. social app css start
 ==========================**/
 .user-profile .hovercard .socialheader {
   background: url(../images/social-app/social-image.png); }
@@ -18585,11 +18585,11 @@ footer {
     width: 15px;
     height: 15px; }
 
-/**=====================
-     79. social app CSS end
+/**=====================
+     79. social app CSS end
 ==========================**/
-/**=====================
-     87. task app CSS Start
+/**=====================
+     87. task app CSS Start
 ==========================**/
 .modal-open .datepickers-container {
   z-index: 1075; }
@@ -18649,11 +18649,11 @@ footer {
   .taskadd table tr:last-child td {
     padding-bottom: 15px; } }
 
-/**=====================
-   87. task app CSS Ends
+/**=====================
+   87. task app CSS Ends
 ==========================**/
-/**=====================
-     42. Timeline CSS Start
+/**=====================
+     42. Timeline CSS Start
 ==========================**/
 .activity .media {
   margin-bottom: 30px; }
@@ -19045,11 +19045,11 @@ footer {
     .cd-timeline-content h4 {
       font-size: 18px; } }
 
-/**=====================
-     42. Timeline  CSS Ends
+/**=====================
+     42. Timeline  CSS Ends
 ==========================**/
-/**=====================
-    43. Timeline 2 CSS Start
+/**=====================
+    43. Timeline 2 CSS Start
 ==========================**/
 .timeliny {
   position: relative;
@@ -19192,11 +19192,11 @@ footer {
       border-right: 8px solid transparent;
       border-bottom: 8px solid var(--theme-deafult); }
 
-/**=====================
-     43. Timeline 2 CSS Ends
+/**=====================
+     43. Timeline 2 CSS Ends
 ==========================**/
-/**=====================
-     22. User profile css start
+/**=====================
+     22. User profile css start
 ==========================**/
 .user-profile .ttl-info h6 {
   font-size: 12px;
@@ -19313,23 +19313,23 @@ footer {
   .user-profile .social-media a:hover {
     color: var(--theme-deafult); }
 
-/**=====================
-     22. User profile css Ends
+/**=====================
+     22. User profile css Ends
 ==========================**/
-/**=====================
-    83. Wishlist CSS start
+/**=====================
+    83. Wishlist CSS start
 ==========================**/
 .wishlist table tr td svg {
   color: #7b7b7b; }
 
-/**=====================
-    83. Wishlist CSS Ends
+/**=====================
+    83. Wishlist CSS Ends
 ==========================**/
-/* ---------------------
-	*** themes ***
+/* ---------------------
+	*** themes ***
 -----------------------*/
-/**=====================
-   55. theme layout CSS Start
+/**=====================
+   55. theme layout CSS Start
 ==========================**/
 body.dark-only {
   color: rgba(255, 255, 255, 0.7);
@@ -22421,11 +22421,11 @@ body[class*='dark-'] .for-dark {
 body[class*='dark-'] .for-light {
   display: none; }
 
-/**=====================
-   55. theme layout CSS ends
+/**=====================
+   55. theme layout CSS ends
 ==========================**/
-/**=====================
-   55. theme layout CSS Start
+/**=====================
+   55. theme layout CSS Start
 ==========================**/
 .page-wrapper.compact-wrapper .page-body-wrapper.sidebar-icon .sidebar-wrapper[sidebar-layout="border-sidebar"] .sidebar-main .sidebar-links > li .sidebar-link, .page-wrapper.compact-wrapper .page-body-wrapper.horizontal-menu .sidebar-wrapper[sidebar-layout="border-sidebar"] .sidebar-main .sidebar-links > li .sidebar-link, .page-wrapper.horizontal-wrapper .page-body-wrapper.sidebar-icon .sidebar-wrapper[sidebar-layout="border-sidebar"] .sidebar-main .sidebar-links > li .sidebar-link, .page-wrapper.horizontal-wrapper .page-body-wrapper.horizontal-menu .sidebar-wrapper[sidebar-layout="border-sidebar"] .sidebar-main .sidebar-links > li .sidebar-link {
   border-bottom: 1px solid rgba(57, 73, 171, 0.1);
@@ -22972,11 +22972,11 @@ body[class*='dark-'] .for-light {
 .page-wrapper.compact-wrapper .page-body-wrapper.sidebar-icon .sidebar-wrapper[sidebar-layout="iconcolor-sidebar"] .sidebar-main .sidebar-links > li:nth-child(7n+60):hover a:hover, .page-wrapper.compact-wrapper .page-body-wrapper.horizontal-menu .sidebar-wrapper[sidebar-layout="iconcolor-sidebar"] .sidebar-main .sidebar-links > li:nth-child(7n+60):hover a:hover, .page-wrapper.horizontal-wrapper .page-body-wrapper.sidebar-icon .sidebar-wrapper[sidebar-layout="iconcolor-sidebar"] .sidebar-main .sidebar-links > li:nth-child(7n+60):hover a:hover, .page-wrapper.horizontal-wrapper .page-body-wrapper.horizontal-menu .sidebar-wrapper[sidebar-layout="iconcolor-sidebar"] .sidebar-main .sidebar-links > li:nth-child(7n+60):hover a:hover {
   background-color: rgba(79, 195, 247, 0.15) !important; }
 
-/**=====================
-   55. theme layout CSS ends
+/**=====================
+   55. theme layout CSS ends
 ==========================**/
-/**=====================
-   59. Customizer  CSS Start
+/**=====================
+   59. Customizer  CSS Start
 ==========================**/
 .customizer-links {
   position: fixed;
@@ -23265,11 +23265,11 @@ body[class*='dark-'] .for-light {
         .layout-grid:not(.customizer-color) li > .body ul .body .badge {
           position: absolute; }
 
-/**=====================
-     59.Customizer CSS Ends
+/**=====================
+     59.Customizer CSS Ends
 ==========================**/
-/**=====================
-     47. Footer CSS Start
+/**=====================
+     47. Footer CSS Start
 ==========================**/
 .footer {
   background-color: #fff;
@@ -23290,11 +23290,11 @@ body[class*='dark-'] .for-light {
   width: calc(100% - 280px);
   position: fixed; }
 
-/**=====================
-     47. Footer CSS Ends
+/**=====================
+     47. Footer CSS Ends
 ==========================**/
-/**=====================
-      08. GRID CSS Start
+/**=====================
+      08. GRID CSS Start
 ==========================**/
 .grid-showcase {
   margin-bottom: -10px; }
@@ -23315,8 +23315,8 @@ body[class*='dark-'] .for-light {
     margin-bottom: 30px;
     background-color: rgba(57, 73, 171, 0.02); }
 
-/**=====================
-      08. GRID CSS Ends
+/**=====================
+      08. GRID CSS Ends
 ==========================**/
 /*======= Page Header css Start ======= */
 /*======= Page Header css ends  ======= */
@@ -23598,11 +23598,11 @@ body[class*='dark-'] .for-light {
     transition: 0.5s; }
 
 /*=======Mega menu css end=======*/
-/**=====================
-    05. Header CSS Ends
+/**=====================
+    05. Header CSS Ends
 ==========================**/
-/**=====================
-     36. NAV CSS Start
+/**=====================
+     36. NAV CSS Start
 ==========================**/
 #accordionoc #collapseicon, #accordionoc #collapseicon1 {
   padding-top: 0px; }
@@ -23641,11 +23641,11 @@ body[class*='dark-'] .for-light {
 .inline-nav li {
   line-height: 1.3; }
 
-/**=====================
-     36. NAV CSS Ends
+/**=====================
+     36. NAV CSS Ends
 ==========================**/
-/**=====================
-     51. Search CSS Start
+/**=====================
+     51. Search CSS Start
 ==========================**/
 .search-page .theme-form input {
   border: 1px solid var(--theme-deafult);
@@ -23737,11 +23737,11 @@ body[class*='dark-'] .for-light {
     .search-list .nav-item.show, .search-list .nav-item.active {
       background-color: rgba(57, 73, 171, 0.1); }
 
-/**=====================
-    51. Search CSS Ends
+/**=====================
+    51. Search CSS Ends
 ==========================**/
-/**=====================
-     21. Select 2 CSS Start
+/**=====================
+     21. Select 2 CSS Start
 ==========================**/
 .select2 {
   max-width: 100%; }
@@ -23893,11 +23893,11 @@ body[class*='dark-'] .for-light {
   background-color: var(--theme-deafult) !important;
   color: #fff !important; }
 
-/**=====================
-     21. Select 2 CSS Ends
+/**=====================
+     21. Select 2 CSS Ends
 ==========================**/
-/**=====================
-    78. Sidebar CSS Start
+/**=====================
+    78. Sidebar CSS Start
 ==========================**/
 .page-wrapper.compact-wrapper .page-body-wrapper.sidebar-icon div.sidebar-wrapper .sidebar-main .sidebar-links > li .sidebar-submenu li a:after, .page-wrapper.compact-wrapper .page-body-wrapper.sidebar-icon div.sidebar-wrapper .sidebar-main .sidebar-links > li .mega-menu-container .mega-box .link-section .submenu-title h5:after {
   position: absolute;
@@ -25120,11 +25120,11 @@ body[class*='dark-'] .for-light {
   .toggle-nav i {
     font-size: 20px; } }
 
-/**=====================
-    78. Sidebar CSS Ends
+/**=====================
+    78. Sidebar CSS Ends
 ==========================**/
-/**=====================
-    60. RTL CSS Start
+/**=====================
+    60. RTL CSS Start
 ==========================**/
 .rtl .page-wrapper.compact-wrapper .page-body-wrapper.sidebar-icon .sidebar-wrapper {
   position: fixed;
@@ -27472,11 +27472,11 @@ body[class*='dark-'] .for-light {
     margin-left: 8px;
     margin-right: unset; } }
 
-/**=====================
-    60. RTL CSS Ends
+/**=====================
+    60. RTL CSS Ends
 ==========================**/
-/**=====================
-    63. Box-layout CSS start
+/**=====================
+    63. Box-layout CSS start
 ==========================**/
 .box-layout {
   background-image: url(../images/other-images/boxbg.jpg);
@@ -27856,6 +27856,6 @@ body[class*='dark-'] .for-light {
     .box-layout .page-wrapper.compact-wrapper .page-body-wrapper.sidebar-icon.sidebar-wrapper.close_icon ~ .footer-fix {
       width: 100%; } }
 
-/**=====================
-    63. Box-layout CSS ends
+/**=====================
+    63. Box-layout CSS ends
 ==========================**/

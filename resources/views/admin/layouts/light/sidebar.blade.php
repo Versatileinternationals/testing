@@ -164,9 +164,9 @@
                   @if(App\Models\ModulePermission::where('role_id',12)->where('module_id',96)->first() == null || Auth::user()->role_id==1)
                   <li><a class="lan-5" href="{{url('blzinvst_online_application')}}">Online Application Forms</a></li>
                   @endif
-                  @if(App\Models\ModulePermission::where('role_id',12)->where('module_id',98)->first() == null || Auth::user()->role_id==1)
+                 <!-- @if(App\Models\ModulePermission::where('role_id',12)->where('module_id',98)->first() == null || Auth::user()->role_id==1)
                   <li><a class="lan-5" href="{{url('blzinvst_QueryList')}}">Query Listing</a></li>
-                  @endif
+                  @endif-->
                   @if(App\Models\ModulePermission::where('role_id',12)->where('module_id',97)->first() == null || Auth::user()->role_id==1)
                   <li><a class="lan-5" href="{{url('blzinvst_faq')}}">FAQ</a></li>			
                   @endif

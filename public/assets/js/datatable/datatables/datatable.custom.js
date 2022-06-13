@@ -1,4 +1,4 @@
-$(document).ready(function() {
-    $('product-list').DataTable();
- 
+$(document).ready(function() {
+    $('product-list').DataTable();
+ 
 });

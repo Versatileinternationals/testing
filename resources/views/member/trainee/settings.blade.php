@@ -470,7 +470,7 @@
                             <div class="row mb-6">
                                 <!--begin::Label-->
                                 <label class="col-lg-4 col-form-label fw-bold fs-6">
-                                    <span class="required">Website Link</span>
+                                    <span>Website Link</span>
                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Website Link"></i>
                                 </label>
                                 <!--end::Label-->

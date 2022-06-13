@@ -64,3 +64,6 @@ Stack trace:
 [03-Jun-2022 12:58:14 UTC] PHP Fatal error:  Method App\Models\User::__toString() must not throw an exception, caught ErrorException: Undefined variable: ids in /home4/unitejm/beltraide.unitexbelize.com/app/Http/Controllers/FrontController.php on line 0
 [09-Jun-2022 10:26:58 UTC] PHP Fatal error:  Assignments can only happen to writable values in /home4/unitejm/beltraide.unitexbelize.com/app/Http/Controllers/SellerPanelController.php on line 330
 [09-Jun-2022 10:27:48 UTC] PHP Fatal error:  Assignments can only happen to writable values in /home4/unitejm/beltraide.unitexbelize.com/app/Http/Controllers/SellerPanelController.php on line 330
+[13-Jun-2022 07:58:43 UTC] PHP Fatal error:  'continue' not in the 'loop' or 'switch' context in /home4/unitejm/beltraide.unitexbelize.com/app/Http/Controllers/MemberController.php on line 1054
+[13-Jun-2022 08:00:14 UTC] PHP Fatal error:  'continue' not in the 'loop' or 'switch' context in /home4/unitejm/beltraide.unitexbelize.com/app/Http/Controllers/MemberController.php on line 1054
+[13-Jun-2022 11:00:48 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\SellerPanelController::store() in /home4/unitejm/beltraide.unitexbelize.com/app/Http/Controllers/SellerPanelController.php on line 389

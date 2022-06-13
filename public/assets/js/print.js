@@ -1,4 +1,4 @@
-"use strict";
-function myFunction() {
-    window.print();
+"use strict";
+function myFunction() {
+    window.print();
 }

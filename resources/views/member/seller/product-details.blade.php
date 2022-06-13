@@ -66,7 +66,11 @@
             
                                  <tr>
                                      
-                                     <td>{{$value->created_at}}</td>
+                                     <td>
+									 <?php   $timestamp = strtotime($value->created_at);
+									       $new_date=date("d-M-Y", $timestamp); ?>
+									 
+									 {{$new_date}}</td>
             
                                     <td>{{'#'.$value->product_number}}</td>
             
@@ -165,5 +169,7 @@
         }
    })
    </script>
+   
+ 
 @endsection
 

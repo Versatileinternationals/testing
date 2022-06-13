@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClientTestimonial extends Model
 { 
     use HasFactory;
-    protected $fillable = ['name', 'description', 'designation', 'country','Status'];
+    protected $fillable = ['name', 'description', 'designation', 'country','Status','user_id'];
     protected $table = "ClientTestimonial";
 
     

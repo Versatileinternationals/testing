@@ -1,5 +1,5 @@
-"use strict";
-(function($) {
-    "use strict";
-$('#basic-1').DataTable();
+"use strict";
+(function($) {
+    "use strict";
+$('#basic-1').DataTable();
 })(jQuery);

@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Quotations;
 use App\Models\SellerProfile;
+use App\Models\ClientTestimonial;
+
 use Illuminate\Support\Facades\File;
 use Excel;
 
@@ -30,12 +32,15 @@ class SellerPanelController extends Controller
     {    
         $member_id=Session::get('member_id');
         $member=User::find($member_id);
+		echo $member_id;
         $user_session =  User::where('id', $member_id)->get();
         $sellerData=SellerProfile::where('seller_id', $member_id)->first();
         if($member_id=="")
         {
          return redirect("/");   
-        }else{
+        }
+		else
+		{
         return view('member/seller/dashboard',compact('member', 'sellerData','user_session'));
         }
         
@@ -239,6 +244,85 @@ class SellerPanelController extends Controller
             ]);
         }
     }
+	public function add_testimonials()
+    {       
+        $member_id=Session::get('member_id');
+        $member=User::find($member_id);
+        $moduleName = $this->moduleName;  
+        $category = Category::where('status',1)->get();
+        $brand = Brand::where('status',1)->get();
+        $products = Product::where('status',1)->orderBy('id','DESC')->get();
+        $user_session =  User::where('id', $member_id)->get();
+        $sellerData=SellerProfile::where('seller_id', $member_id)->first();
+        if($member_id=="")
+        {
+         return redirect("/");   
+        }else{
+        return view('member/seller/add-testimonial', compact('user_session','moduleName','sellerData','member'));
+        }
+    }
+    public function store_testimonial(Request $request)
+    {
+      $member_id=Session::get('member_id');
+        $request->validate([
+            'name' => 'required',    
+            'description' => 'required',          
+                
+        ]); 
+     
+        
+        $Testimonials = ClientTestimonial::create([
+            
+            'name' => $request->name,
+            'designation' => $request->designation,
+            'description' => $request->description,
+            'country' => $request->country,
+            'user_id' => $member_id,
+           
+        ]);
+        
+        
+       return redirect()->back()->with('message', 'Client Testimonial is added successfully.!');
+        //return redirect($this->route)->withStatus(__('Client Testimonial is added successfully.'));
+    }
+     
+	 public function edit_testimonial($id){
+       
+       $ClientTestimonials = ClientTestimonial::find($id); 
+       return view('member/seller/edit-testimonial', compact('ClientTestimonials'));
+    }
+
+    public function update_testimonial(Request $request,$id)
+    {
+        $request->validate([
+            'name' => 'required',    
+            'designation' => 'required',          
+            'description' => 'required',          
+            
+        ]); 
+      
+        
+        $ClientTestimonials = ClientTestimonial::find($id)->update([
+           'name' => $request->name,
+           'designation' => $request->designation,
+		   'description' => $request->description,
+		   'country' => $request->country,
+		   
+           //'Status' => $request->status,
+        ]);
+        
+        //return redirect()->back()->with('message', 'Client Testimonial is updated successfully.!');
+		//return redirect()->route('seller/testimonials')->with('status', 'Client Testimonial is updated successfully.');
+        return redirect('seller/testimonials')->withStatus(__('Client Testimonial is updated successfully.'));
+    }
+
+
+	 public function delete_testimonials($id)
+	{
+         
+        $testimonials = ClientTestimonial::find($id)->delete();
+       return redirect()->back()->with('message', 'Testimonial Delete Successfully!');
+    }
     public function productdetails()
 
     {        
@@ -247,7 +331,7 @@ class SellerPanelController extends Controller
         $member=User::find($member_id);       
         $moduleName = $this->moduleName;   
         $sellerData=SellerProfile::where('seller_id', $member_id)->first();
-        $products = Product::with(['category','subcategory','brandData'])->where("m_id",$member_id)->orderBy('id','DESC')->get();  
+        $products = Product::with(['category','subcategory','brandData'])->where("m_id",$member_id)->orderBy('id','ASC')->get();  
         if($member_id=="")
         {
          return redirect("/");   
@@ -262,7 +346,7 @@ class SellerPanelController extends Controller
         $member_id=Session::get('member_id');
         $user_session =  User::where('id', $member_id)->get();
         $member=User::find($member_id);       
-        $moduleName = 'Sellers Quotation Lists';   
+        $moduleName = ' Quotation Lists';   
         $sellerData=SellerProfile::where('seller_id', $member_id)->first();
         $data = Quotations::where("seller_id",$member_id)->orderBy('id','DESC')->get();  
         if($member_id=="")
@@ -272,8 +356,169 @@ class SellerPanelController extends Controller
         return view('member/seller/quotationslists', compact('user_session','moduleName','sellerData', 'data', 'member'));
         }
     }
+	public function testimonialslist()
+
+    {        
+        $member_id=Session::get('member_id');
+        $user_session =  User::where('id', $member_id)->get();
+        $member=User::find($member_id);       
+        $moduleName = 'Seller Testimonials';   
+       
+        $ClientTestimonials = ClientTestimonial::where('Status',1)->where('user_id',$member_id)->orderBy('id','DESC')->get(); 
+        //print_r($ClientTestimonials);		
+        if($member_id=="")
+        {
+         return redirect("/");   
+        }else{
+        return view('member/seller/testimonials', compact('user_session','moduleName','member','ClientTestimonials'));
+        }
+    }
+     //  Category  Crud // 
+	public function category_list()
+    {        
+        $member_id=Session::get('member_id');
+        $user_session =  User::where('id', $member_id)->get();
+        $member=User::find($member_id);       
+        $moduleName = 'Category';              
+        $category = Category::orderBy('id','DESC')->get();  
+        return view('member/seller/category',compact('user_session','moduleName','member','category'));
+    }
+	public function category_create()
+    {
+                 
+        return view('member/seller/add-category');
+    }
+
+    public function category_store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',     
+            'image' => 'required',     
+            //'status' => 'required',
+        ]);  
+        $data = $request->all();
+        $data['name'] = ucfirst($request->name);
+		$data['status'] = 0;
+        $data['category_id'] = rand(10000,99999);
+        if ($request->hasFile('image')) {   
+            $image = $request->file('image');
+			$status=0;
+            $name = uniqid() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/assets/images/upload');
+            $image->move($destinationPath, $name);         
+            $data['image'] = $name;
+        }  
+        
+        $category = Category::create($data);
+       
+        return redirect()->back()->with('message', 'Category is added successfully.!');        
+        //return redirect($this->route)->withStatus(__('Category is added successfully.'));
+    }
     
+    public function category_edit($id)
+    {
+        $moduleName = $this->moduleName;  
+        $category = Category::find(decrypt($id));     
+      
+        return view('admin/Admb2b/'.$this->view.'/_form', compact('moduleName', 'category'));
+    }
+
+    public function category_update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',                                          
+            'status' => 'required',            
+        ]);  
+        $data = $request->all();  
+        $data['name'] = ucfirst($request->name);   
+        if ($request->hasFile('image')) {   
+            $image = $request->file('image');
+            $name = uniqid() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/assets/images/upload');
+            $image->move($destinationPath, $name);         
+            $data['image'] = $name;
+        }   
+        Category::find($id)->update($data);        
+        return redirect($this->route)->withStatus(__('Category is updated successfully.'));
+    }
+
+	
+    //  Category  Crud End// 
+	
+	// SubCategory start//
+	public function subcategory_list()
+    {        
+        $member_id=Session::get('member_id');
+        $user_session =  User::where('id', $member_id)->get();
+        $member=User::find($member_id);       
+        $moduleName = 'Category';              
+        $subcategory = SubCategory::with(['category'])->orderBy('id','DESC')->get();  
+        return view('member/seller/subcategory', compact('moduleName','user_session','member', 'subcategory'));
+    }
+
+    public function subcategory_create()
+    {
+        $moduleName = $this->moduleName;       
+        $category = Category::OrderBy('id','DESC')->get();    
+        return view('member/seller/add-subcategory', compact('moduleName', 'category'));
+    }
+
+    public function subcategory_store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required', 
+            'category_id' => 'required',     
+            'image' => 'required',     
+
+        ]);  
+        $data = $request->all();
+        $data['name'] = ucfirst($request->name);
+		$data['status'] = 0;
+        $data['subcategory_id'] = rand(10000,99999);
+        if ($request->hasFile('image')) {   
+            $image = $request->file('image');
+            $name = uniqid() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/assets/images/upload');
+            $image->move($destinationPath, $name);         
+            $data['image'] = $name;
+        }  
+        
+        $category = SubCategory::create($data);
+       
+         return redirect()->back()->with('message', 'SubCategory is added successfully.!');      
+        //return redirect($this->route)->withStatus(__('SubCategory is added successfully.'));
+    }
     
+    public function subcategory_edit($id)
+    {
+        $moduleName = $this->moduleName;  
+        $subcategory = SubCategory::find(decrypt($id));     
+        $category = Category::OrderBy('id','DESC')->get();    
+        return view('admin/Admb2b/'.$this->view.'/_form', compact('moduleName', 'category', 'subcategory'));
+    }
+
+    public function subcategory_update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',  
+            'category_id' => 'required',                                          
+            'status' => 'required',            
+        ]);  
+        $data = $request->all();  
+        $data['name'] = ucfirst($request->name);   
+        if ($request->hasFile('image')) {   
+            $image = $request->file('image');
+            $name = uniqid() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/assets/images/upload');
+            $image->move($destinationPath, $name);         
+            $data['image'] = $name;
+        }   
+        SubCategory::find($id)->update($data);        
+        return redirect($this->route)->withStatus(__('SubCategory is updated successfully.'));
+    }
+	
+	
+	// Sub Category End//
     public function updateprofile(Request $request)
     {
         $member_id=Session::get('member_id');
@@ -368,91 +613,7 @@ class SellerPanelController extends Controller
         
     }
     
-    public function doLogin(Request $request)
-    {
-        $this->validate($request, [
-            'email'   => 'required|email',
-            'password'  => 'required|alphaNum|min:3'
-        ]);
-        
-        $user_data = array(
-            'email'  => $request->get('email'),
-            'password' => $request->get('password')
-        );
-        
-        
-        if(Auth::attempt($user_data))
-        {
-            $member=Auth::User();
-            
-            if($member->user_type=='seller'){
-            
-                Session::put('member_id', $member->id);
-                return redirect('/seller');
-                
-            }elseif($member->user_type=='buyer'){
-                
-                Session::put('member_id', $member->id);
-                return redirect('/buyer');
-                
-            }elseif($member->user_type=='trainee'){
-                
-                Session::put('member_id', $member->id);
-                return redirect('/trainee');
-                
-            }elseif($member->user_type=='investor'){
-                
-                Session::put('member_id', $member->id);
-                return redirect('/investor');
-                
-            }else{
-                Auth::logout();
-                return back()->with('error', 'Choosen User is not allowed!!!');
-            }
-        }
-        else
-        {
-            return back()->with('error', 'Wrong Login Details');
-        }
-    }
-    
-    public function doRegister(Request $request)
-    {
-        
-        if($request->password==$request->cpassword){
-            
-            $request->validate([
-                'name' => 'required',   
-                'last_name' => 'required',   
-                'email' => 'required|unique:users',           
-                'phone' => 'required|min:10|max:10',     
-                'password' => 'required|min:6'   
-            ]);  
-            $data = $request->all();
-            $data['name'] = ucfirst($request->name);
-            $data['last_name'] = ucfirst($request->last_name);
-            $data['password'] = Hash::make($request->password);
-            $data['user_id'] = rand(10000,99999);
-            $data['image'] = 'default.png';
-            $data['provider'] = 'LOCAL';
-            
-            if(User::create($data))
-            {
-                return back()->with('succ', 'Registration successfull!!');
-            }
-            else
-            {
-                return back()->with('error', 'Please enter details correctly!!');
-            }
-            
-        }
-        else
-        {
-            return back()->with('error', 'Verify password didnot match!!');
-        }
-        
-        
-    }
+
     
     public function logout(Request $request) {
         $id= Session::get('member_id');

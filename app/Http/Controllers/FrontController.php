@@ -152,7 +152,7 @@ class FrontController extends Controller
             'admin_type' => $TypeId,
         ]);
 
-       return redirect()->back()->with('message', 'Request Assistance Successfully!'); 
+       return redirect()->back()->with('message', 'Request Assistance Sent Successfully!'); 
        // return redirect('member/seller/product-details')->withStatus(__('Product is added successfully.'));
 
     }
@@ -189,30 +189,83 @@ class FrontController extends Controller
         $Session_id = Session::get('member_id');
         $user_session =  User::where('id', $Session_id)->get();
         $ClientTestimonialLists = ClientTestimonial::where('Status',1)->orderBy('id','DESC')->get(); 
-        $ProductLists = Product::where('status', 1)->where('featured', 1)->orderBy('id','DESC')->get(); 
+        $ProductLists = Product::where('status',1)->where('featured',1)->orderBy('id','DESC')->get(); 
         $FaqLists = BlzFaq::where('Status',1)->orderBy('id','DESC')->get(); 
-        $BrandLists = Brand::orderBy('id','DESC')->get();  
-
+        //$BrandLists = Brand::orderBy('id','DESC')->get();  
+        $BrandLists= DB::table("users")
+                        ->Join("seller_profile","users.id","=","seller_profile.seller_id")
+						->Join("products","products.m_id","=","seller_profile.seller_id")
+                        ->where("seller_profile.export",1)
+                        //->where("seller_profile.location",$request->search)
+                        ->get();
+         //
 		$search = $request->search;
 		
 	    if($search)
 	    {
 	    $SellerLists= DB::table("users")
-                        ->join("seller_profile","users.id","=","seller_profile.seller_id")
+                        ->leftJoin("seller_profile","users.id","=","seller_profile.seller_id")
+						->leftJoin("products","products.m_id","=","seller_profile.seller_id")
                         ->where("users.user_type","seller")
                         ->where("seller_profile.location",$request->search)
                         ->get();
 	    }elseif($id)  {
-        $SellerLists= DB::table("users")
-                        ->join("seller_profile","users.id","=","seller_profile.seller_id")
+        $SellerLists= DB::table("users.*,seller_profile.banner")
+                       ->leftJoin("seller_profile","users.id","=","seller_profile.seller_id")
+						->leftJoin("products","products.m_id","=","seller_profile.seller_id")
                         ->where("users.user_type","seller")
                         ->where("users.name",$id)
                         ->get();
 	    }else{
-	        $SellerLists = User::where('user_type','seller')->where('Status',1)->orderBy('id','DESC')->get();
+	        //$SellerLists = User::where('user_type','seller')->where('Status',1)->orderBy('id','DESC')->get();
+		$SellerLists=	DB::table("users")
+		                 ->select('users.*','seller_profile.banner')
+                        ->Join("seller_profile","users.id","=","seller_profile.seller_id")
+				// 		->Join("products","products.m_id","=","seller_profile.seller_id")
+                        ->where("users.user_type","seller")->orderBy('users.id','DESC')->get();
+                       // ->where("users.name",$id)
+                      //  ->get();
 	    }
         return view('business-directory-beltraide', compact('user_session','ProductLists','m_id','ClientTestimonialLists','FaqLists','BrandLists','SellerLists')); 
     
+    }
+	
+	public function product_search(Request $request)
+    {   
+       
+       
+        $Session_id = Session::get('member_id');
+        $user_session =  User::where('id', $Session_id)->get();
+        //$ProductLists = Product::where('status', 1)->where('featured', 1)->orderBy('id','DESC')->get(); 
+       
+
+		$search = $request->search;
+		
+		 if($search)
+        {
+			
+            $query = $request->search;
+            
+            $ProductLists = DB::table("products")
+                    ->join("users","products.m_id","=","users.id")
+                    ->join("seller_profile","users.id","=","seller_profile.seller_id")
+                    ->select("users.id","users.name as username","users.email","products.*")
+                    ->where('products.name','LIKE',"%{$query}%")
+                    ->get();
+                    //dd($ProductLists);
+                    
+	    }
+		else
+		{
+		$ProductLists = DB::table("products")
+                    ->join("users","products.m_id","=","users.id")
+                    ->join("seller_profile","users.id","=","seller_profile.seller_id")
+                    ->select("users.id","users.name as username","users.email","products.*")
+                   // ->where('products.name','LIKE',"%{$query}%")
+                    ->get();	
+		}			
+        return view('products', compact('user_session','ProductLists')); 
+       
     }
     
     
@@ -259,23 +312,40 @@ class FrontController extends Controller
             else{
                 $output .='<li><a href="/business-directory-beltraide/'.$row->username.'">'.$row->productsname.'</a></li>';
             }
-            // foreach($data as $row)
-            // {
-            //     if($request->search=='Users'){
-            //         $output .='<li><a href="/business-directory-beltraide/'.$row->username.'">'.$row->username.'</a></li>';
-            //     }
-            //     elseif($request->search=='Product'){
-            //         $output .='<li><a href="/business-directory-beltraide/'.$row->productsname.'">'.$row->productsname.'</a></li>';
-            //     }
-            //     else{
-            //         $output .='<li><a href="/business-directory-beltraide/'.$row->productsname.'">'.$row->productsname.'</a></li>';
-            //     }
-
-            // }
+            
             $output .='</ul>';
             return $output;
         }
     }
+    
+    
+    public function Seller_search(Request $request)
+    {
+       
+        if($request->get("query"))
+        {
+            $query = $request->input("query");
+            $user = DB::table("users")->where('user_type','=','seller')
+                    ->select("users.id as userid","users.name as username","users.email","users.image")
+                    ->where('users.name','LIKE',"%{$query}%")
+                    ->get();
+                     //dd($user);
+            
+            $output ='<datalist id="sellerlist" style="display: none;
+            position: relative;
+            background: #fff;
+            ">';
+
+                foreach($user as $row){
+                        $output .='<option value='.$row->username.'>#'.$row->userid." ".$row->username.'</option>';
+                }
+
+            $output .='</datalist>';
+            return $output;
+        }
+    }
+    
+    
       public function Business_Search(Request $request)
     {   
 
@@ -286,7 +356,7 @@ class FrontController extends Controller
                         // ->select("seller_profile.location")
                         ->get(); 
 
-	       return response()->json([
+	      return response()->json([
 	        'status' => 200,
 	        'success' => $SellerLists
 	        ]);
@@ -388,7 +458,7 @@ class FrontController extends Controller
         //                         // ->select("seller_profile.id","seller_profile.*","users.image")
         //                         ->where('seller_profile.seller_id',$id)
         //                         ->first();
-        $ClientTestimonialLists = ClientTestimonial::where('Status',1)->orderBy('id','DESC')->get(); 
+        $ClientTestimonialLists = ClientTestimonial::where('Status',1)->where('user_id',$id)->orderBy('id','DESC')->get(); 
         $ProductLists = Product::where('status', 1)->where('m_id', $id)->orderBy('id','DESC')->get(); 
         return view('seller_profile', compact('user_session','ProductLists','ClientTestimonialLists','SellerData','SellerProfile')); 
     
@@ -594,26 +664,26 @@ class FrontController extends Controller
     }
 	
 	
-    public function storeRequirements(Request $request){
+    public function postRequirements(Request $request){
         
-        $request->validate([
-            'seller_id' => 'required',
+        // $request->validate([
+        //     'seller' => 'required',
             
-            'company' => 'required',
+        //     'company' => 'required',
             
-            'name' => 'required',  
+        //     'name' => 'required',  
             
-            'service' => 'required',   
+        //     'service' => 'required',   
 
-            'qty' => 'required',          
+        //     'qty' => 'required',          
             
-            'unit' => 'required',          
+        //     'unit' => 'required',          
 
-            'phone' => 'required',          
+        //     'phone' => 'required',          
 
-            'email' => 'required'
+        //     'email' => 'required'
 
-        ]); 
+        // ]); 
         
         $product = Quotations::insert([
 
@@ -641,9 +711,14 @@ class FrontController extends Controller
 
         ]);
         
-        return redirect('seller-profile/'.base64_encode($request->seller_id))->with('succ', 'Requirement Submitted Successfully !');;
+        //return redirect('seller-profile/'.base64_encode($request->seller_id))->with('succ', 'Requirement Submitted Successfully !');
+        return back()->with('succ','Requirement Submitted Successfully !');
         
     }
+    
+    
+    
+    
 	 public function selfpacedsubmit(Request $request)
     {   
         $Session_id = Session::get('member_id');

@@ -1122,7 +1122,7 @@ p.event-desc {
 }
 .contentEventsList{
     position: relative;
-    padding-left: 70px;
+    padding-left: 10px;
     min-height: 42px;
     margin-bottom: 10px;
 }
@@ -1933,7 +1933,12 @@ padding:10px;
 .job-desc {
     margin-top: 20px;
 }
-
+.jobimage img
+{
+	
+float:right !important;	
+margin-top:50px;
+}	
 img.whatsapplink {
     width: 3rem;
 }

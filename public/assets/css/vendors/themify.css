@@ -1,4 +1,4 @@
-/* FONT PATH
+/* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'themify';
@@ -115,7 +115,7 @@ a [class*=" icon-"] {
 [class*=" icon-"].pull-right {
   margin-left: .3em; }
 
-/* EXTRAS
+/* EXTRAS
  * -------------------------- */
 /* Stacked and layered icon */
 .icon-stack {

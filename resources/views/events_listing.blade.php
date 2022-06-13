@@ -67,8 +67,13 @@
 							{!!html_entity_decode($EventList->Description)!!}
 							</span>
 							
-                           
-							<span class="text-center1 mb-4 event_register"><a href="{{url('events-register/'.base64_encode($EventList->id))}}" class="btn btn-secondary">Register</a> </span>
+                           @if(Session::get('member_id'))
+							  
+						<span class="text-center1 mb-4 event_register"><a href="{{url('events-register/'.base64_encode($EventList->id))}}" class="btn btn-secondary">Register</a> </span>	
+							
+						     @else
+							<span class="text-center1 mb-4 event_register"><a href="{{url('events-register-guest/'.base64_encode($EventList->id))}}" class="btn btn-secondary"> Register</a> </span>
+						   @endif
 							 <span class="mb-0 event_readmore"><a href="{{url('events-detail/'.base64_encode($EventList->id))}}" class="btn btn-secondary">READ MORE</a> </span>
 							
                         </div>

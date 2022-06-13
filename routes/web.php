@@ -33,7 +33,7 @@ Route::get('lang/{locale}', function ($locale) {
 Route::get('logout', [App\Http\Controllers\UserController::class,'logout']);
 
 Route::get('ajaxapproved', [App\Http\Controllers\ProductController::class,'ajaxapproved']);
-
+Route::post('featured', [App\Http\Controllers\ProductController::class,'featured']);
 //Front
 Route::get('/', [App\Http\Controllers\FrontController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\FrontController::class, 'index'])->name('home');
@@ -50,8 +50,12 @@ Route::post('/store_request_assistance', [App\Http\Controllers\FrontController::
  Route::post('role', [App\Http\Controllers\RoleController::class, 'store']);
  
 Route::get('/products/{id?}', [App\Http\Controllers\FrontController::class, 'products'])->name('products');
+Route::post('/product-search', [App\Http\Controllers\FrontController::class, 'product_search'])->name('product-search');
+
 Route::get('/business-directory-beltraide/{id?}', [App\Http\Controllers\FrontController::class, 'businessdirectory'])->name('business-directory-beltraide');
 Route::post('/business-directory-beltraide_sear', [App\Http\Controllers\FrontController::class, 'Services_search'])->name('business-directory-beltraide-sear');
+Route::post('/business-directory-beltraide_seller', [App\Http\Controllers\FrontController::class, 'Seller_search'])->name('business-directory-beltraide-seller');
+
 
 
 Route::post('/business-directory-beltraide', [App\Http\Controllers\FrontController::class, 'Business_Search'])->name('business-directory-beltraide');
@@ -92,6 +96,7 @@ Route::get('/support-services', [App\Http\Controllers\FrontController::class, 's
 Route::get('/trainning_calender', [App\Http\Controllers\FrontController::class, 'trainning_calender'])->name('trainning_calender');
 
 Route::post('/postrequirements', [App\Http\Controllers\FrontController::class, 'storeRequirements'])->name('postrequirements');
+Route::post('/requirements', [App\Http\Controllers\FrontController::class, 'postRequirements'])->name('requirements');
 //
 Route::get('/finance-access', [App\Http\Controllers\FrontController::class, 'finance_access'])->name('finance-access');
 
@@ -164,8 +169,6 @@ Route::get('/user/forgot_password', function () {
 
 
 
-
-
 Route::get('/admin', function () {  
     return view("auth.login");
     });
@@ -173,12 +176,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::group(['middleware' => "web"], function () {
   Route::view('index', 'admin.back.dashboard.index')->name('index');  
 
-  
-  
-  
-  
-  
-  
 Route::get('sdbc_self_paced', [App\Http\Controllers\BlzInvstTrainingController::class, 'create']); 
 Route::get('btec_self_paced', [App\Http\Controllers\BlzInvstTrainingController::class, 'create']); 
 Route::get('expblz_training', [App\Http\Controllers\ExportBlzTrainingController::class, 'index']); 
@@ -1128,7 +1125,9 @@ Route::post('/SwitchToAccount',[App\Http\Controllers\MemberController::class,'Sw
 Route::post('/Login_switch',[App\Http\Controllers\MemberController::class,'Login_switch']);
 Route::post('/memberregister', [App\Http\Controllers\MemberController::class, 'doRegister']);
 Route::post('/profile-update', [App\Http\Controllers\MemberController::class, 'profileupdate']);
+Route::post('/featured/{id}',[App\Http\Controllers\ProductController::class,'featured']);
 
+Route::post('/featured',[App\Http\Controllers\ProductController::class,'featuredsearch']);
 
 Route::group(['middleware'=>['auth']],function(){
 	    
@@ -1142,6 +1141,30 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/seller/add-product', [App\Http\Controllers\SellerPanelController::class, 'addproduct']);   
     Route::get('/seller/quotation-lists', [App\Http\Controllers\SellerPanelController::class, 'quotationslists']);
     Route::post('/seller/delete/{id}', [App\Http\Controllers\SellerPanelController::class, 'product_delete']);
+ 
+ // route for category
+Route::get('seller/category', [App\Http\Controllers\SellerPanelController::class, 'category_list']);     
+Route::get('seller/category/create', [App\Http\Controllers\SellerPanelController::class, 'category_create']);  
+Route::post('seller/category', [App\Http\Controllers\SellerPanelController::class, 'category_store']);  
+Route::get('seller/category/{id}', [App\Http\Controllers\SellerPanelController::class, 'category_edit']);
+Route::put('seller/category/{id}', [App\Http\Controllers\SellerPanelController::class, 'category_update']);  
+Route::post('/seller/delete/{id}', [App\Http\Controllers\SellerPanelController::class, 'category_delete']);
+// route for sub category
+Route::get('seller/subcategory', [App\Http\Controllers\SellerPanelController::class, 'subcategory_list']);     
+Route::get('seller/subcategory/create', [App\Http\Controllers\SellerPanelController::class, 'subcategory_create']);  
+Route::post('seller/subcategory', [App\Http\Controllers\SellerPanelController::class, 'subcategory_store']);  
+Route::get('seller/subcategory/{id}', [App\Http\Controllers\SellerPanelController::class, 'subcategory_edit']);  
+Route::put('seller/subcategory/{id}', [App\Http\Controllers\SellerPanelController::class, 'subcategory_update']);
+Route::post('/seller/delete/{id}', [App\Http\Controllers\SellerPanelController::class, 'subcategory_delete']);
+	
+	//
+	 Route::get('/seller/testimonials', [App\Http\Controllers\SellerPanelController::class, 'testimonialslist']);
+	 Route::get('/seller/delete_testimonials/{id}', [App\Http\Controllers\SellerPanelController::class, 'delete_testimonials']);
+	 Route::get('/seller/add-testimonials', [App\Http\Controllers\SellerPanelController::class, 'add_testimonials']);
+     Route::post('/seller/store_testimonial', [App\Http\Controllers\SellerPanelController::class, 'store_testimonial']); 	 
+	 Route::get('/seller/edit-testimonial/{id}', [App\Http\Controllers\SellerPanelController::class, 'edit_testimonial']);  
+     Route::post('/seller/edit-testimonial/{id}', [App\Http\Controllers\SellerPanelController::class, 'update_testimonial']);
+	//
     
     Route::post('/seller/password', [App\Http\Controllers\SellerPanelController::class, 'password']);  
     Route::post('/seller/profile', [App\Http\Controllers\SellerPanelController::class, 'updateprofile']); 

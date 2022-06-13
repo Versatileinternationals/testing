@@ -61,10 +61,11 @@
                     years old </p>
                 <div class="row rowBusinessHub">
                     @foreach($SellerLists as $SellerList)
+              
                     <div class="col-md-4">
                         <div class="boxBusinessHub">
                             <div class="imgBusinessHub">
-                                <img src="{{url('assets/images/upload/'.$SellerList->image)}}" alt="" title="" />
+                              <a href="{{ url('seller-profile/'.base64_encode($SellerList->id))}}"> <img src="{{url('assets/images/upload/'.$SellerList->banner)}}" alt="" title="" /></a>
                             </div>
                             <div class="contentBusinessHub">
                                 <h3>{{$SellerList->name}}</h3>
@@ -104,8 +105,10 @@
                 <div class="container">
                     <div class="row rowLogos align-items-center text-center">
                         @foreach($BrandLists as $BrandList)
+						
+						
                         <div class="col-md-2">
-                            <img src="{{url('assets/images/upload/'.$BrandList->image)}}" alt="" title="">
+                         <a href="{{url('seller-profile/'.base64_encode($BrandList->m_id))}}">  <img src="{{url('assets/images/upload/'.$BrandList->image)}}" alt="" title=""></a>
                         </div>
                         @endforeach
                     </div>
@@ -140,7 +143,7 @@
         <div class="sectionGreen sectionMadein sectionPostRequirments">
             <div class="container">
                 <h2 class="mb-4 text-white text-center">Post Your Requirements</h2>
-                <form>
+                <form action="requirements" method="POST">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="input-area mb-2">
@@ -150,9 +153,17 @@
                         </div>
                         <div class="col-md-6">
                             <div class="input-area mb-2">
-                                <label class="form-label">Select Seller </label>
-                                <input type="text" class="form-control" placeholder="Select Seller ">
+                                <label class="form-label">Name </label>
+                                <input type="text" class="form-control"  name="seller" placeholder="Name"/>
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-area mb-2">
+                                <label class="form-label">Select Seller </label>
+                                {{ csrf_field() }}
+                                <input list="sellerlist" type="text" class="form-control" id="seller" name="seller" placeholder="Search Seller..."/>
+                            </div>
+                            <div id="searching_seller"></div>
                         </div>
                         <div class="col-md-3">
                             <div class="input-area mb-2">
@@ -180,7 +191,7 @@
                         </div>
                     </div>
                     <p class="pt-3">
-                        <button class="btn btn-white btnFull" type="submit">Get Quotes Now</button>
+                        <center><button class="btn btn-white btn" type="submit">Get Quotes Now</button></center>
                     </p>
                 </form>
             </div>
@@ -270,10 +281,42 @@ $("#name").keyup(function()
         $('#searching_list').val($(this).text());  
         $('#searching_list').fadeOut();  
     }); 
-    
-    
-   
 
+
+</script>
+
+
+<script>
+$("#seller").keyup(function()
+{
+  var query = $(this).val();
+        if(query != '')
+        {
+         var _token = $('input[name="_token"]').val();
+         $.ajax({
+          url:"/business-directory-beltraide_seller",
+          method:"POST",
+          data:{query:query, _token:_token},
+          success:function(data){
+              console.log(data);
+           $('#searching_seller').fadeIn();  
+           $('#searching_seller').html(data);
+          }
+         });
+        }
+  });
+  $(document).on('click', 'li', function(){  
+        $('#searching_seller').val($(this).text());  
+        $('#searching_seller').fadeOut();  
+    }); 
+
+
+</script>
+
+<script>
+    function getvalue(){
+        
+    }
 </script>
     
 @endsection

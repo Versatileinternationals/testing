@@ -1,5 +1,5 @@
-/**=====================
-     62. Responsive CSS Start
+/**=====================
+     62. Responsive CSS Start
 ==========================**/
 /* ========= min and max scss for 1200 to 1366 screen ========= */
 @media screen and (max-width: 1660px) {
@@ -2687,6 +2687,6 @@
   .sidebar-wrapper .back-btn {
     display: none; } }
 
-/**=====================
-     62. Responsive CSS Ends
+/**=====================
+     62. Responsive CSS Ends
 ==========================**/

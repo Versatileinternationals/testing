@@ -142,7 +142,7 @@
                 <select class="browser-default custom-select" name="category" id="category" style="width:22%;margin-bottom:5px;">
                     <option hidden selected>Select category</option>
                     <option value="1">Approved</option>
-                     <option value="Pending">Pending</option>
+                    <option value="Pending">Pending</option>
                     <option value="0">Dispproved</option>
                 </select>
                                     
@@ -188,11 +188,11 @@
                         
 
                      @foreach ($products as $value)
-
+					 {{ $value }}
                      <tr>
 
-                        <td>{{$value->updated_at}}</td>
-
+                       <td>{{$value->created_at}}</td>
+                       
                         <td>{{'#'.$value->product_number}}</td>
                         
                         <td>{{$value->company_name}}</td>
@@ -224,7 +224,19 @@
                             <td><span class="badge badge-warning">Pending</span></td>
                             @endif
                         
-                       <td><input data-id="{{$value->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Yes" data-off="No" {{ $value->featured ? 'checked' : '' }}></td>
+                       
+                        <td>
+                            
+							<input value="" type="checkbox" class="featured" name="featured">Featured
+
+                            <!--<select class="browser-default custom-select" name="featured" id="featured">
+                                <option hidden selected>Featured</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>-->
+                        </td>
+                        
+                     
 
                         <td><span class="text-danger"><strike> {{$value->regular_price}} </strike></span> {{$value->sale_price}} USD</td>
 
@@ -280,6 +292,8 @@
 
 @section('script')
 
+
+
 <script>
     //   $(document).ready(function() {
         $('#category').on('change', function() {
@@ -295,6 +309,30 @@
                    $('#tbody').html(response);
                  }
           });
+        });
+    // });
+</script>
+
+<script>
+    //   $(document).ready(function() {
+        $('.featured').on('change', function() {
+          var featured=$(this).val();
+		
+          $.ajax({
+              headers : { 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content') },
+                url:"{{ url('featured') }}",
+                type:'POST',
+                dataType:'json',
+                data:{
+                  featured:featured
+                },
+                success:function(res){
+                    //$("#subcategory_id").val('').trigger('change');
+                    alert(res)
+                    
+                    
+                }
+            });
         });
     // });
 </script>

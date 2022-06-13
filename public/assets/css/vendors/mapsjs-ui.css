@@ -1,18 +1,18 @@
-/*
- * Explanation why the layout looks so complicated:
- * The UI container needs a position (absolute or relative) to prevent z-index issues (DomMarker on top of UI)
- * Therefore it has these additional styles:
- *    position: absolute;
- *    width: 100%;
- *    height: 100%;
- * To prevent that the UI container captures all events the container is displaced by
- *   left: 100%;
- * To neutralize the displacement for the UI elements within the UI container the following adjustments are needed:
- *  - InfoBubble (.H_ib):            left: -100%;
- *  - left anchor (.H_l_left):       margin-left: -100%;
- *  - center anchor (.H_l_center):   left: -50%;            (was left: 50%)
- *  - right anchor (.H_l_right):     right: 100%;           (was right: 0)
- *                                        margin-left: -100%;
+/*
+ * Explanation why the layout looks so complicated:
+ * The UI container needs a position (absolute or relative) to prevent z-index issues (DomMarker on top of UI)
+ * Therefore it has these additional styles:
+ *    position: absolute;
+ *    width: 100%;
+ *    height: 100%;
+ * To prevent that the UI container captures all events the container is displaced by
+ *   left: 100%;
+ * To neutralize the displacement for the UI elements within the UI container the following adjustments are needed:
+ *  - InfoBubble (.H_ib):            left: -100%;
+ *  - left anchor (.H_l_left):       margin-left: -100%;
+ *  - center anchor (.H_l_center):   left: -50%;            (was left: 50%)
+ *  - right anchor (.H_l_right):     right: 100%;           (was right: 0)
+ *                                        margin-left: -100%;
  */
 .H_ui {
   font-size: 10px;
@@ -37,8 +37,8 @@
 .H_noevs {
   pointer-events: none; }
 
-/*
- * Layout
+/*
+ * Layout
  */
 .H_l_left {
   position: absolute;
@@ -88,8 +88,8 @@
 .H_l_right.H_l_middle.H_l_vertical .H_ctl {
   float: right; }
 
-/**
- *  Element styles
+/**
+ *  Element styles
  */
 .H_ctl {
   margin: .6em;
@@ -130,8 +130,8 @@
   color: #5A6166;
   cursor: default; }
 
-/**
- *   Base Elements
+/**
+ *   Base Elements
  */
 .H_l_vertical .H_grp > .H_btn {
   border-radius: 0; }
