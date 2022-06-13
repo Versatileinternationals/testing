@@ -1,0 +1,103 @@
+@extends('admin.layouts.light.master')
+@section('title', 'Team Members')
+
+@section('css')
+@endsection
+
+@section('style')
+@endsection
+
+@section('breadcrumb-title')
+<h3>Edit {{$moduleName}}</h3>
+@endsection
+
+@section('breadcrumb-items')
+<li class="breadcrumb-item">{{$moduleName}}</li>
+<li class="breadcrumb-item active">Edit</li>
+@endsection
+
+
+@section('content')
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <form method="post" action="{{url('blzinvst_team_members/'.$Blzgen_promotion->id)}}" class="form theme-form"  enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"> Name</label>
+                        <input class="form-control" type="text" value="{{old('name',$Blzgen_promotion->name)}}" name="name">
+                        @error('name')
+                        <div class="text-danger show"><strong>{{$message}}</strong></div>
+                        @enderror
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-3">
+                      <label class="col-form-label">Designation</label>
+                       <textarea class="form-control"  value="{{old('designation')}}" name="designation">{{old('designation',$Blzgen_promotion->designation)}}</textarea>  
+                      @error('designation')
+                        <div class="text-danger show"><strong>{{$message}}</strong></div>
+                        @enderror
+                    </div>
+                  </div>
+                </div>
+				
+				<div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"> Image</label>
+                        <input class="form-control" type="file" value="{{old('image',$Blzgen_promotion->image)}}" name="image">
+                       
+                       
+                       
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group mb-3">
+                      <label class="col-form-label">Description</label>
+                       <textarea class="form-control"  value="{{old('description')}}" name="description">{{old('description',$Blzgen_promotion->description)}}</textarea>  
+                      @error('description')
+                        <div class="text-danger show"><strong>{{$message}}</strong></div>
+                        @enderror
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                 
+                  <div class="col-6">
+                   <div class="form-group mb-3">
+                      <label class="col-form-label">Status</label>
+                      <select class="js-example-basic-single select2 col-sm-12 form-select" name="Status" id="status">                                                  
+                        <option value="1" {{old('Status',$Blzgen_promotion->Status) =="1"? 'selected' : ''}}>Active</option>
+                        <option value="0" {{old('Status',$Blzgen_promotion->Status) =="0"? 'selected' : ''}}>InActive</option>
+                      </select>  
+                      @error('Status')
+                      <div class="text-danger show"><strong>{{$message}}</strong></div>
+                      @enderror
+                    </div>
+                </div> 
+				</div>
+                <div class="row">
+                  <div class="col-12">
+                    <div>
+                      <button type="submit" class="btn btn-primary me-3">Update</button>
+                      <a href="{{url('blzinvst_what_we_do')}}"><button type="button" class="btn btn-danger">Cancel</button></a>
+                    </div>
+                  </div>
+                </div>
+				
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@section('script')
+@endsection

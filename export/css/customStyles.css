@@ -1,0 +1,323 @@
+/* Overiding or adding of styling to some css classes defined for the template */
+/* figure.effect-oscar img {
+  height: auto;
+  width: 100%;
+}
+.client_logo img {
+    width: auto;
+    height: 65px;
+}
+.about-img img {
+    width: auto;
+    height: 50%;
+    width: 100%;
+    height: auto;
+    padding-bottom: 0px;
+    margin-bottom:  0px;
+}
+.bg-light-grey{
+  background-color: 	#E8E8E8;
+}
+.bs-text-primary{
+  color: #0275d8;
+}
+.bg-export-red{
+  background-color: 	#871618;
+}
+*/
+.img-frame img {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+}
+
+/*adding boostrap porimary btn cause template overides the primary bootstrap class*/
+.bs-btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.bs-btn-primary:hover,
+.bs-btn-primary:focus,
+.bs-btn-primary:active,
+.bs-btn-primary.active,
+.open .dropdown-toggle.bs-btn-primary {
+  color: #fff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+.bs-btn-primary:active,
+.bs-btn-primary.active,
+.open .dropdown-toggle.bs-btn-primary {
+  background-image: none;
+}
+.bs-btn-primary.disabled,
+.bs-btn-primary[disabled],
+fieldset[disabled] .bs-btn-primary,  
+.bs-btn-primary.disabled:hover,
+.bs-btn-primary[disabled]:hover,
+fieldset[disabled] .bs-btn-primary:hover,  
+.bs-btn-primary.disabled:focus,
+.bs-btn-primary[disabled]:focus,
+fieldset[disabled] .bs-btn-primary:focus,  
+.bs-btn-primary.disabled:active,
+.bs-btn-primary[disabled]:active,
+fieldset[disabled] .bs-btn-primary:active,  
+.bs-btn-primary.disabled.active,
+.bs-btn-primary[disabled].active,
+fieldset[disabled] .bs-btn-primary.active {  
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.bs-btn-primary .badge {
+  color: #428bca;
+  background-color: #fff;
+}
+
+.bs-text-primary{
+  color:#007bff!important;
+}a.bs-text-primary:focus,a.bs-text-primary:hover{color:#0056b3!important;}
+
+/* starting line break*/
+.line-breaker { width:100%; border-bottom: 1px solid rgba(0,0,0,.1);line-height:0.1em; margin:10px 0 20px; } 
+.line-breaker span { background:#fff; padding-right:10px; }
+
+/* custom hr separator*/
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+}
+.separator:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .25em;
+}
+
+/* CUSTOM DROPDOWN */
+
+.dropdown-item.d-custom-1 {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+  padding: 15px;
+  color: #333;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: .2s ease;
+}
+
+.dropdown-menu.d-custom-1{
+  min-width: 150px;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.dropdown-menu{
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: unset;
+            transform-origin: unset;
+    text-align: center;
+}
+
+.dropdown-menu.show {
+  visibility: hidden;
+}
+
+.dropdown-menu.show {
+    visibility: visible;
+    display: block;
+}
+
+.img-style-1{
+	width: auto;
+	max-width: 100%;
+	height: 250px !important;
+	object-position: 50% 50% !important;
+	object-fit: cover !important;
+}
+
+.prod-img-style-1{
+	width: auto;
+	max-width: 100%;
+	height: 265px !important;
+	object-position: 50% 50% !important;
+	object-fit: cover !important;
+}
+
+/********* Custom Radio for registration ***********/
+/* HIDE RADIO */
+.c-type-radio { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+.c-type-radio + label {
+  cursor: pointer;
+}
+
+/***** PRE Loader ****/
+/*#preloader {
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color: rgb(235,235,235, 0.9);//#f5f5f5; /* change if the mask should have another color then white /
+	z-index:99999; /* makes sure it stays on top /
+}
+#status {
+	width:100px;
+	height:100px;
+	position:absolute;
+	left:50%; /* centers the loading animation horizontally one the screen /
+	top:50%; /* centers the loading animation vertically one the screen /
+	background-image:url(../images/preloader/loading.gif);
+	z-index:9999; /* path to your loading animation /
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: cover;
+	margin:-10px 0 0 -36px; /* is width and height divided by two /
+}*/
+
+/********** PRELOADER *******/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background-color: rgb(235,235,235, 0.9);
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 35px);
+  left: calc(50% - 35px);
+  border: 7px solid #ee3b24;//#8a141b;
+  border-top-color: rgb(235,235,235, 0.9);//#fff;
+  border-bottom-color: rgb(235,235,235, 0.9);//#fff;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*.icon-select select{
+	font-family: fontawesome;
+
+}*/
+
+//allow drop menue to be scrollable
+/*
+body {
+  overflow: hidden;
+}
+
+.navbar .navbar-collapse {
+  max-height: calc(100vh - 5em);
+  overflow-y: auto;
+}
+
+
+*/
+#login-menu{
+  overflow: hidden;
+}
+#login-menu {
+  max-height: calc(100vh - 5em);
+  overflow-y: auto;
+}
+
+/***** Audio HTML Tag ************/
+#audio-preview{
+  display: inline;
+  width: 100%;
+
+}
+
+/***** END of Audio HTML Tag ************/
+
+
+/**** Owl Caracel*****/
+.owl-carousel .item {
+      text-align: center;
+  }
+.owl-theme .owl-controls .owl-buttons div {
+    color: #FFF;
+    display: inline-block;
+    padding: 0px;
+    background: #bdc9c5;
+    opacity: 0.5;
+}
+
+.owl-prev,
+.owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-250%);
+}
+
+.owl-prev {
+  left: 1rem;
+}
+
+.owl-next {
+  right: 1rem;
+}
+
+/* end of owl caracel ***/
+
+/* CSS for product images in slider*/
+
+.slider-product-img{
+
+	height:350px !important; 
+	width:auto !important;
+	max-width:100% !important;
+
+}
+
+
+
+/* end of product image in slider*/

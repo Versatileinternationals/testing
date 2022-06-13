@@ -1,0 +1,194 @@
+#Clean URLs
+
+RewriteEngine On
+
+#setting the root directory where all the website files are located
+RewriteBase /export
+
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} !-d 	
+
+# preventing other sites to access my images from my website and using up my banwidth
+#RewriteCond %{HTTP_REFERER} !^$
+#RewriteCond %{HTTP_REFERER} !^http://(www.)?192.168.10.77/.*$ [NC]
+#RewriteRule .+.(gif|jpg|png)$ - [F]
+
+# Error Docuement Redirects
+#ErrorDocument 404 /export/index.php?page=404
+
+# -------------- Start of Clear URLs ----------------- #
+
+# Public top bar links
+RewriteRule ^sectors/?$ index.php?page=viewSectors
+RewriteRule ^products/?$ index.php?page=viewProducts
+RewriteRule ^services/?$ index.php?page=viewServices
+RewriteRule ^music/?$ index.php?page=viewMusic
+RewriteRule ^faqs?$ index.php?page=faqs
+RewriteRule ^company-profiles/?$ index.php?page=viewCompanies
+RewriteRule ^aboutUs?$ index.php?page=aboutUs
+RewriteRule ^contact?$ index.php?page=contact
+RewriteRule ^signIn?$ index.php?page=signIn
+
+# signUp links
+RewriteRule ^registration/buyer?$ index.php?page=buyerRegistration
+RewriteRule ^registration/company?$ index.php?page=companyRegistration
+RewriteRule ^forgot-password?$ index.php?page=forgotPassword
+
+
+# get product by hscode
+RewriteRule ^products/hs-code/([0-9]+)$ index.php?page=viewProducts&hsCode=$1 [L]
+# Products links 
+RewriteRule ^products/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?page=productDetails&productName=$1&productId=$2 [L]
+# Sector link to view products 
+RewriteRule ^products/sector/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?page=viewProducts&sectorName=$1&sectorId=$2 [L]
+# Export Market link to view products 
+RewriteRule ^products/export-market/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?page=viewProducts&exMarketName=$1&exMarketId=$2 [L]
+
+# Service Links 
+RewriteRule ^services/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?page=serviceDetails&serName=$1&serId=$2 [L]
+RewriteRule ^services/category/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?page=viewServices&scName=$1&scId=$2 [L]
+RewriteRule ^services/sub-category/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?page=viewServices&sscName=$1&sscId=$2 [L]
+
+# Music Links 
+RewriteRule ^music/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?page=musicDetails&mName=$1&mId=$2 [L]
+
+# Company Links
+RewriteRule ^company/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?page=companyDetail&companyName=$1&companyId=$2 [L]
+
+# Sector Links
+RewriteRule ^sector/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?page=sectorDetails&sName=$1&sId=$2 [L]
+
+# email verifcation link
+RewriteRule ^verification/([a-zA-Z0-9\-\=]+)$ index.php?page=accountVerification&code=$1 [L]
+
+RewriteRule ^password-reset/([a-zA-Z0-9\-\=]+)$ index.php?page=resetPassword&resetCode=$1 [L]
+
+########################## THE FOLLOWING RULES ARE FOR WHEN USERS HAVE LOGGED IN #####################################
+
+RewriteRule ^dashboard?$ index.php?page=dashboard
+RewriteRule ^my-profile?$ index.php?page=profile
+RewriteRule ^logout?$ index.php?page=logout
+
+#################### LINKS AVAIABLE FOR MOST USERS ###################################################################
+RewriteRule ^product-list?$ index.php?page=productList
+RewriteRule ^product-list/featured?$ index.php?page=featuredProduct
+
+#################### ADMIN ########################################################################################### 
+
+# Page Links 
+#RewriteRule ^buyer-list?$ index.php?page=buyerList
+#RewriteRule ^company-list?$ index.php?page=companyList
+
+# Company Account  Request
+RewriteRule ^company/account-requests?$ index.php?page=accountRequestList
+RewriteRule ^view/company/pending-approval/([a-zA-Z0-9\-\=]+)$ index.php?page=companyInfo&cStatus=pending&cId=$1 [L]
+
+# User list
+RewriteRule ^user-list/?$ index.php?page=userList
+RewriteRule ^add-user?$ index.php?page=addUser
+
+# company 
+RewriteRule ^user-list/company/featured?$ index.php?page=featuredCompany
+
+RewriteRule ^view/company/([a-zA-Z0-9\-\=]+)$ index.php?page=companyInfo&cId=$1 [L]
+RewriteRule ^edit/company/([a-zA-Z0-9\-\=]+)$ index.php?page=editCompany&cId=$1 [L]
+RewriteRule ^delete/company/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteCompany&cId=$1 [L]
+
+# buyer
+RewriteRule ^view/buyer/([a-zA-Z0-9\-\=]+)$ index.php?page=buyerInfo&bId=$1 [L]
+RewriteRule ^edit/buyer/([a-zA-Z0-9\-\=]+)$ index.php?page=editBuyer&bId=$1 [L]
+RewriteRule ^delete/buyer/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteBuyer&bId=$1 [L]
+
+# admin
+RewriteRule ^edit/admin/([a-zA-Z0-9\-\=]+)$ index.php?page=editAdmin&aId=$1 [L]
+RewriteRule ^delete/admin/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteAdmin&aId=$1 [L]
+
+# super user
+RewriteRule ^edit/super-user/([a-zA-Z0-9\-\=]+)$ index.php?page=editSu&suId=$1 [L]
+RewriteRule ^delete/super-user/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteSu&suId=$1 [L]
+
+# Products
+
+RewriteRule ^product-list/company/([a-zA-Z0-9\-\=]+)$ index.php?page=productList&cId=$1 [L]
+RewriteRule ^view/product/([a-zA-Z0-9\-\=]+)$ index.php?page=productInfo&pId=$1 [L]
+RewriteRule ^edit/product/([a-zA-Z0-9\-\=]+)$ index.php?page=editProduct&pId=$1 [L]
+RewriteRule ^delete/product/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteProduct&pId=$1 [L]
+
+# Services 
+RewriteRule ^service-list?$ index.php?page=serviceList
+RewriteRule ^service-list/featured?$ index.php?page=featuredService
+RewriteRule ^service-list/company/([a-zA-Z0-9\-\=]+)$ index.php?page=serviceList&cId=$1 [L]
+
+RewriteRule ^add-service?$ index.php?page=addService
+RewriteRule ^view/service/([a-zA-Z0-9\-\=]+)$ index.php?page=serviceInfo&serId=$1 [L]
+RewriteRule ^edit/service/([a-zA-Z0-9\-\=]+)$ index.php?page=editService&serId=$1 [L]
+RewriteRule ^delete/service/([a-zA-Z0-9\-\=]+)/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteService&serId=$1&cId=$2 [L]
+
+# Service Category
+
+RewriteRule ^service-category-list?$ index.php?page=serviceCategoryList
+RewriteRule ^add-service-category?$ index.php?page=addServiceCategory
+RewriteRule ^edit/service-category/([a-zA-Z0-9\-\=]+)$ index.php?page=editServiceCategory&scId=$1 [L]
+RewriteRule ^delete/service-category/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteServiceCategory&scId=$1 [L]
+
+# Sub Service Category
+RewriteRule ^sub-service-category-list?$ index.php?page=subServiceCategoryList
+RewriteRule ^add-sub-service-category?$ index.php?page=addSubServiceCategory
+RewriteRule ^edit/sub-service-category/([a-zA-Z0-9\-\=]+)$ index.php?page=editSubServiceCategory&sscId=$1 [L]
+RewriteRule ^delete/sub-service-category/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteSubServiceCategory&sscId=$1 [L]
+
+# Music
+RewriteRule ^music-list?$ index.php?page=musicList
+RewriteRule ^music-list/company/([a-zA-Z0-9\-\=]+)$ index.php?page=musicList&cId=$1 [L]
+
+RewriteRule ^add-music?$ index.php?page=addMusic
+RewriteRule ^edit/music/([a-zA-Z0-9\-\=]+)$ index.php?page=editMusic&mId=$1 [L]
+RewriteRule ^delete/music/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteMusic&mId=$1 [L]
+
+# Export Market
+RewriteRule ^export-market-list?$ index.php?page=exportMarketList
+RewriteRule ^delete/export-market/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteExportMarket&emId=$1 [L]
+
+# HS Code
+RewriteRule ^hs-code-list?$ index.php?page=hsCodeList
+RewriteRule ^add-hs-code?$ index.php?page=addHsCode
+RewriteRule ^edit/hs-code/([a-zA-Z0-9\-\=]+)$ index.php?page=editHsCode&hsId=$1 [L]
+RewriteRule ^delete/hs-code/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteHsCode&hsId=$1 [L]
+
+# Sector
+RewriteRule ^sector-list/?$ index.php?page=sectorList
+RewriteRule ^sector-list/featured?$ index.php?page=featuredSectors
+
+RewriteRule ^add-sector?$ index.php?page=addSector
+RewriteRule ^edit/sector/([a-zA-Z0-9\-\=]+)$ index.php?page=editSector&sId=$1 [L]
+RewriteRule ^delete/sector/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteSector&sId=$1 [L]
+
+# Faq
+RewriteRule ^faq-list?$ index.php?page=faqList
+RewriteRule ^add-faq?$ index.php?page=addFaq
+RewriteRule ^edit/faq/([a-zA-Z0-9\-\=]+)$ index.php?page=editFaq&fId=$1 [L]
+RewriteRule ^delete/faq/([a-zA-Z0-9\-\=]+)$ index.php?action=deleteFaq&fId=$1 [L]
+
+# Approving a Company Account 
+RewriteRule ^account-request/approve/([a-zA-Z0-9\-\=]+)$ index.php?action=approveCompanyAccount&cId=$1 [L]
+RewriteRule ^account-request/reject/([a-zA-Z0-9\-\=]+)$ index.php?action=rejectCompanyAccount&cId=$1 [L]
+
+#################### COMPANY #########################################################################################
+# Music
+RewriteRule ^my-music?$ index.php?page=myMusic
+
+# Products
+RewriteRule ^my-products?$ index.php?page=myProducts
+RewriteRule ^add-product?$ index.php?page=addProduct
+RewriteRule ^edit/my-product/([a-zA-Z0-9\-\=]+)$ index.php?page=editMyProduct&pId=$1 [L]
+
+# Service
+RewriteRule ^my-services?$ index.php?page=myServices
+#################### BUYER ###########################################################################################
+
+
+# approving a company links 
+#RewriteRule ^account-request/approve/([a-zA-Z0-9\-\=]+)$ index.php?action=approveCompanyAccount&cId=$1 [L]
+#RewriteRule ^account-request/reject/([a-zA-Z0-9\-\=]+)$ index.php?action=rejectCompanyAccount&cId=$1 [L]
+
+# -------------- End of Clean URLs ------------------- #
