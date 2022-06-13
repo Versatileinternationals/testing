@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/unitejm/test.unitexbelize.com/
+    - /bin/cp * $DEPLOYPATH
+ 
